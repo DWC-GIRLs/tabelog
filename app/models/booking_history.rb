@@ -1,0 +1,2 @@
+class BookingHistory < ApplicationRecord
+end

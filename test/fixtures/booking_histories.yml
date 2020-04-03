@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  account_id: 1
+  rate_id: 1
+  reservation_number: 1
+  date: 2020-04-03
+  pople_count: 1
+  total_price: 1
+  reservation_status: 1
+  notes: MyString
+
+two:
+  account_id: 1
+  rate_id: 1
+  reservation_number: 1
+  date: 2020-04-03
+  pople_count: 1
+  total_price: 1
+  reservation_status: 1
+  notes: MyString
