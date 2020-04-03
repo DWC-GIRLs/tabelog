@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_03_143907) do
+ActiveRecord::Schema.define(version: 2020_04_03_144356) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -33,6 +33,19 @@ ActiveRecord::Schema.define(version: 2020_04_03_143907) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_accounts_on_email", unique: true
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
+  end
+
+  create_table "booking_histories", force: :cascade do |t|
+    t.integer "account_id"
+    t.integer "rate_id"
+    t.integer "reservation_number", null: false
+    t.date "date", null: false
+    t.integer "pople_count", null: false
+    t.integer "total_price", null: false
+    t.integer "reservation_status", null: false
+    t.string "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "genres", force: :cascade do |t|
