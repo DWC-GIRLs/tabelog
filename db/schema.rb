@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_03_144356) do
+ActiveRecord::Schema.define(version: 2020_04_03_145009) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -78,6 +78,55 @@ ActiveRecord::Schema.define(version: 2020_04_03_144356) do
   create_table "restaurant_images", force: :cascade do |t|
     t.integer "restaurant_id", null: false
     t.string "image", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "restaurants", force: :cascade do |t|
+    t.integer "shop_id"
+    t.string "name"
+    t.string "logo_image"
+    t.string "name_kana"
+    t.string "address"
+    t.string "station_name"
+    t.string "l_area_code"
+    t.string "m_area_code"
+    t.string "s_area_code"
+    t.float "lat"
+    t.float "lng"
+    t.string "genre_code"
+    t.string "genre_name"
+    t.string "search_keyword"
+    t.string "catch"
+    t.integer "capacity"
+    t.string "access"
+    t.string "urls"
+    t.string "photo"
+    t.string "open"
+    t.string "close"
+    t.integer "party_capacity"
+    t.integer "wifi", default: 0
+    t.integer "free_drink", default: 0
+    t.integer "free_food", default: 0
+    t.integer "private_room", default: 0
+    t.integer "horigotatsu", default: 0
+    t.integer "tatami", default: 0
+    t.integer "card", default: 0
+    t.integer "non_smoking", default: 0
+    t.integer "charter", default: 0
+    t.integer "ktai", default: 0
+    t.integer "parking", default: 0
+    t.integer "barrier_free", default: 0
+    t.integer "other_memo", default: 0
+    t.integer "karaoke", default: 0
+    t.integer "tv", default: 0
+    t.integer "english", default: 0
+    t.integer "pet", default: 0
+    t.integer "child", default: 0
+    t.integer "lunch", default: 0
+    t.integer "midnight", default: 0
+    t.string "shop_detail_memo"
+    t.string "coupon_urls"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
