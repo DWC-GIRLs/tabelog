@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  namespace :owners do
+    get 'owners/mypage'
+    get 'owners/edit'
+    get 'owners/update'
+  end
   namespace :accounts do
     get 'search/area'
     get 'search/keyword'
