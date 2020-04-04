@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   namespace :owners do
+    get 'booking_histories/show'
+    get 'booking_histories/index'
+    get 'booking_histories/update'
+  end
+  namespace :owners do
     get 'restaurants/mypage'
     get 'restaurants/new'
     get 'restaurants/create'
