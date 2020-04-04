@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
   namespace :accounts do
+    get 'accounts/mypage'
+    get 'accounts/edit'
+    get 'accounts/update'
+    get 'accounts/destroy'
+    get 'accounts/logout'
+    get 'accounts/welcome'
+    get 'accounts/confirm'
+    get 'accounts/goodbye'
+  end
+  namespace :accounts do
     get 'homes/top'
     get 'homes/about'
   end
