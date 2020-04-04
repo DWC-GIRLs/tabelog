@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
   namespace :accounts do
+    get 'reviews/index'
+    get 'reviews/new'
+    get 'reviews/create'
+    get 'reviews/edit'
+    get 'reviews/update'
+    get 'reviews/destroy'
+    get 'reviews/rate_create'
+    get 'reviews/rate_update'
+  end
+  namespace :accounts do
     get 'accounts/mypage'
     get 'accounts/edit'
     get 'accounts/update'
