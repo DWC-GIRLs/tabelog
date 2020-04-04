@@ -1,5 +1,16 @@
 Rails.application.routes.draw do
   namespace :owners do
+    get 'restaurants/mypage'
+    get 'restaurants/new'
+    get 'restaurants/create'
+    get 'restaurants/welcome'
+    get 'restaurants/edit'
+    get 'restaurants/update'
+    get 'restaurants/confirm'
+    get 'restaurants/goodbye'
+    get 'restaurants/destroy'
+  end
+  namespace :owners do
     get 'owners/mypage'
     get 'owners/edit'
     get 'owners/update'
