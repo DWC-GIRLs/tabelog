@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
   namespace :accounts do
+    get 'search/area'
+    get 'search/keyword'
+    get 'search/genre'
+    get 'search/booking'
+    get 'search/detail'
+  end
+  namespace :accounts do
     get 'restaurants/show'
     get 'restaurants/index'
   end
