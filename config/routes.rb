@@ -1,24 +1,11 @@
 Rails.application.routes.draw do
-  namespace :owners do
-    get 'booking_histories/show'
-    get 'booking_histories/index'
-    get 'booking_histories/update'
-  end
-  namespace :owners do
-    get 'restaurants/mypage'
-    get 'restaurants/new'
-    get 'restaurants/create'
-    get 'restaurants/welcome'
-    get 'restaurants/edit'
-    get 'restaurants/update'
-    get 'restaurants/confirm'
-    get 'restaurants/goodbye'
-    get 'restaurants/destroy'
-  end
-  namespace :owners do
-    get 'owners/mypage'
-    get 'owners/edit'
-    get 'owners/update'
+  devise_for :owners
+  devise_for :accounts
+
+  ######## ここからアカウント ########
+  namespace :accounts do
+    get 'homes/top'
+    get 'homes/about'
   end
   namespace :accounts do
     get 'search/area'
@@ -56,11 +43,29 @@ Rails.application.routes.draw do
     get 'accounts/confirm'
     get 'accounts/goodbye'
   end
-  namespace :accounts do
-    get 'homes/top'
-    get 'homes/about'
+
+
+  ######## ここからオーナー ########
+  namespace :owners do
+    get 'booking_histories/show'
+    get 'booking_histories/index'
+    get 'booking_histories/update'
   end
-  devise_for :owners
-  devise_for :accounts
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  namespace :owners do
+    get 'restaurants/mypage'
+    get 'restaurants/new'
+    get 'restaurants/create'
+    get 'restaurants/welcome'
+    get 'restaurants/edit'
+    get 'restaurants/update'
+    get 'restaurants/confirm'
+    get 'restaurants/goodbye'
+    get 'restaurants/destroy'
+  end
+  namespace :owners do
+    get 'owners/mypage'
+    get 'owners/edit'
+    get 'owners/update'
+  end
+
 end
