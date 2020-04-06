@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  account_id: 1
+  rate_id: 1
+  status: 1
+  comment: MyString
+  unit_price: 1
+  meal_time: 1
+
+two:
+  account_id: 1
+  rate_id: 1
+  status: 1
+  comment: MyString
+  unit_price: 1
+  meal_time: 1

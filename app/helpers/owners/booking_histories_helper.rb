@@ -1,0 +1,2 @@
+module Owners::BookingHistoriesHelper
+end
