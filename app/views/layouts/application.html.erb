@@ -10,6 +10,9 @@
   </head>
 
   <body>
+    <% if owner_signed_in? %>
+      <%= render 'layouts/owner_header' %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
