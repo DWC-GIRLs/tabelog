@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
-  devise_for :owners
-  devise_for :accounts
+  devise_for :accounts, controllers: {
+    sessions: 'accounts/sessions',
+    passwords: 'accounts/passwords',
+    registrations: 'accounts/registrations'
+  }
+  devise_for :owners, controllers: {
+    sessions: 'owners/sessions',
+    passwords: 'owners/passwords',
+    registrations: 'owners/registrations'
+  }
 
   ######## ここからアカウント ########
   namespace :accounts do
