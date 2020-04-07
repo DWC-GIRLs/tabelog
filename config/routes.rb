@@ -47,25 +47,18 @@ Rails.application.routes.draw do
 
   ######## ここからオーナー ########
   namespace :owners do
-    get 'booking_histories/show'
-    get 'booking_histories/index'
-    get 'booking_histories/update'
-  end
-  namespace :owners do
+    resources :booking_historys, only: [:show, :index, :update]
+
+    resources :restaurants
     get 'restaurants/mypage'
-    get 'restaurants/new'
-    get 'restaurants/create'
     get 'restaurants/welcome'
-    get 'restaurants/edit'
-    get 'restaurants/update'
     get 'restaurants/confirm'
     get 'restaurants/goodbye'
-    get 'restaurants/destroy'
   end
-  namespace :owners do
+
+  scope module: :owners do
+    resources :owners, only: [:edit, :update]
     get 'owners/mypage'
-    get 'owners/edit'
-    get 'owners/update'
   end
 
 end
