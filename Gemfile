@@ -68,3 +68,5 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-line'
 gem 'omniauth-amazon'
 gem 'pry-byebug'
+gem "refile", require: "refile/rails", github: 'manfe/refile'
+gem "refile-mini_magick"
