@@ -1,6 +1,16 @@
 Rails.application.routes.draw do
+  devise_for :accounts, controllers: {
+    sessions: 'accounts/sessions',
+    passwords: 'accounts/passwords',
+    registrations: 'accounts/registrations'
+  }
+  devise_for :owners, controllers: {
+    sessions: 'owners/sessions',
+    passwords: 'owners/passwords',
+    registrations: 'owners/registrations'
+  }
+
   ######## ここからアカウント ########
-  devise_for :accounts
   namespace :accounts do
     get 'homes/top'
     get 'homes/about'
@@ -44,7 +54,6 @@ Rails.application.routes.draw do
 
 
   ######## ここからオーナー ########
-  devise_for :owners
   namespace :owners do
     resources :booking_historys, only: [:show, :index, :update]
 
