@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class Owners::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
+  before_action :configure_sign_up_params, only: [:create]
+  before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
   # def new
@@ -41,14 +41,14 @@ class Owners::RegistrationsController < Devise::RegistrationsController
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
-  # end
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:status, :first_name, :last_name, :first_kana, :last_kana, :nick_name, :phone_number, :password, :password_confirmation, :attribute])
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_account_update_params
-  #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
-  # end
+  def configure_account_update_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:status, :first_name, :last_name, :first_kana, :last_kana, :nick_name, :phone_number, :password, :password_confirmation, :attribute])
+  end
 
   # The path used after sign up.
   # def after_sign_up_path_for(resource)

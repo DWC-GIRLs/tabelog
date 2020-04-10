@@ -28,7 +28,8 @@ ActiveRecord::Schema.define(version: 2020_04_04_083454) do
     t.integer "sex", default: 0, null: false
     t.integer "birthday"
     t.integer "era"
-    t.string "cover_image"
+    t.string "cover_image_id"
+    t.string "profile_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_accounts_on_email", unique: true
@@ -66,9 +67,7 @@ ActiveRecord::Schema.define(version: 2020_04_04_083454) do
     t.string "last_name"
     t.string "first_kana"
     t.string "last_kana"
-    t.string "nick_name"
     t.integer "phone_number"
-    t.integer "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_owners_on_email", unique: true
@@ -91,7 +90,7 @@ ActiveRecord::Schema.define(version: 2020_04_04_083454) do
 
   create_table "restaurant_images", force: :cascade do |t|
     t.integer "restaurant_id", null: false
-    t.string "image", null: false
+    t.string "image_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -99,7 +98,7 @@ ActiveRecord::Schema.define(version: 2020_04_04_083454) do
   create_table "restaurants", force: :cascade do |t|
     t.integer "shop_id"
     t.string "name"
-    t.string "logo_image"
+    t.string "logo_image_id"
     t.string "name_kana"
     t.string "address"
     t.string "station_name"
@@ -115,7 +114,6 @@ ActiveRecord::Schema.define(version: 2020_04_04_083454) do
     t.integer "capacity"
     t.string "access"
     t.string "urls"
-    t.string "photo"
     t.string "open"
     t.string "close"
     t.integer "party_capacity"
@@ -147,7 +145,7 @@ ActiveRecord::Schema.define(version: 2020_04_04_083454) do
 
   create_table "review_images", force: :cascade do |t|
     t.integer "review_id"
-    t.string "image", null: false
+    t.string "image_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

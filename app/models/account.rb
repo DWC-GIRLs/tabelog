@@ -7,5 +7,6 @@ class Account < ApplicationRecord
   has_many :booking_histries, dependent: :destroy
   has_many :rates,            dependent: :destroy
   has_many :reviews,          dependent: :destroy
-  
+
+  attachment :cover_image
 end
