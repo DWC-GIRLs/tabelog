@@ -11,17 +11,23 @@ class Account < ApplicationRecord
   attachment :profile_image
 
   # omniauthのコールバック時に発火
-  def self.from_omniauth(auth)
-   where(provider: auth.provider, uid: auth.uid).first_or_create do |account|
-     account.first_name = auth.info.first_name
-     account.last_name = auth.info.last_name
-     account.nick_name = auth.info.name
-     account.email = auth.info.email
-     account.password = Devise.friendly_token[0,20] # ランダムなパスワードを作成
-     account.profile_image = auth.info.image.gsub("picture","picture?type=large") if account.provider == "facebook"
-     account.profile_image = auth.info.image.gsub("picture","picture?type=large") if account.provider == "line"
-     # account.profile_image = auth.info.image.gsub("_normal","") if account.provider == "twitter"
-   end
+  def self.find_or_create_from_oauth(auth)
+    Account.find_or_create_by(provider: auth.provider, uid: auth.uid) do |account|
+      account.nick_name  = auth.info.nickname || auth.info.name
+      account.avatar_url = auth.info.image
+      account.email      = Account.dummy_email(auth)
+      account.password   = Devise.friendly_token[0, 20]
+    end
   end
+
+  def set_values(omniauth)
+    return if provider.to_s != omniauth['provider'].to_s || uid != omniauth['uid']
+    info = omniauth['info']
+    self.nick_name = info['name']
+    self.password = Devise.friendly_token[0, 20] # ランダムにパスワード作成
+    # self.profile_image = info.['picture']
+    # self.save!
+  end
+
 
 end

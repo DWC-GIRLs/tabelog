@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :accounts, controllers: { omniauth_callbacks: 'accounts/omniauth_callbacks' }
+  
+  devise_for :accounts, controllers: {
+    sessions: 'accounts/sessions',
+    passwords: 'accounts/passwords',
+    registrations: 'accounts/registrations',
+    omniauth_callbacks: 'accounts/omniauth_callbacks'
+  }
   devise_for :owners
 
   ######## ここからアカウント ########

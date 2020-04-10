@@ -60,13 +60,20 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+# .env使用するため
 gem 'dotenv-rails'
+# ログイン機能
 gem 'devise'
+
+gem 'google-api-client'
+# SNS認証
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-line'
 gem 'omniauth-amazon'
+# デバッグ
 gem 'pry-byebug'
+# 画像挿入
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
