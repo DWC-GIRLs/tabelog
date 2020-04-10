@@ -3,7 +3,7 @@ class CreateRestaurants < ActiveRecord::Migration[5.2]
     create_table :restaurants do |t|
       t.integer :shop_id
       t.string :name
-      t.string :logo_image
+      t.string :logo_image_id
       t.string :name_kana
       t.string :address
       t.string :station_name
@@ -19,7 +19,6 @@ class CreateRestaurants < ActiveRecord::Migration[5.2]
       t.integer :capacity
       t.string :access
       t.string :urls
-      t.string :photo
       t.string :open
       t.string :close
       t.integer :party_capacity

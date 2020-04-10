@@ -4,5 +4,5 @@ class Restaurant < ApplicationRecord
   has_many :reviews,          dependent: :destroy
   has_many :review_images,    dependent: :destroy
 
-  attachment :logo_image  
+  attachment :logo_image
 end

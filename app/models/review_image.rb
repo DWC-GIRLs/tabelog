@@ -1,5 +1,5 @@
 class ReviewImage < ApplicationRecord
   belongs_to :review
 
-  attachment :image  
+  attachment :image
 end
