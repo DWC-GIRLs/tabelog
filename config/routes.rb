@@ -58,7 +58,6 @@ Rails.application.routes.draw do
     resources :booking_historys, only: [:show, :index, :update]
 
     resources :restaurants
-    get 'restaurants/mypage'
     get 'restaurants/welcome'
     get 'restaurants/confirm'
     get 'restaurants/goodbye'
