@@ -66,9 +66,7 @@ ActiveRecord::Schema.define(version: 2020_04_04_083454) do
     t.string "last_name"
     t.string "first_kana"
     t.string "last_kana"
-    t.string "nick_name"
     t.integer "phone_number"
-    t.integer "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_owners_on_email", unique: true
