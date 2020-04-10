@@ -11,6 +11,11 @@
   </head>
 
   <body>
+    <% if account_signed_in? %>
+      <%= render 'accounts/shared/login_header' %><!-- ユーザーサインイン時 -->
+    <% else %>
+      <%= render 'accounts/shared/signout_header' %><!-- ユーザーサインアウト時 -->
+    <% end %>
     <%= yield %>
   </body>
 </html>
