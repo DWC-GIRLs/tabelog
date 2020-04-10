@@ -41,6 +41,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'hirb'
   gem 'hirb-unicode'
+  gem 'pry-byebug'
 end
 
 group :development do
@@ -69,3 +70,5 @@ gem 'devise'
 # image upload
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
+
+gem 'dotenv-rails'
