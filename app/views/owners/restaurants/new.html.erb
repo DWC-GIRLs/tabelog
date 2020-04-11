@@ -1,2 +1,108 @@
 <h1>Owners::Restaurants#new</h1>
-<p>Find me in app/views/owners/restaurants/new.html.erb</p>
+
+<%= form_with model: @new_restaurant, url: owners_restaurants_path do |f| %>
+  <%= f.label :"店舗名" %>
+  <%= f.text_field :name %><br>
+
+  <%= f.label :"テンポメイ" %>
+  <%= f.text_field :name_kana %><br>
+
+  <%= f.label :"ロゴ画像" %>
+  <%= f.attachment_field :logo_image %><br>
+
+  <%= f.label :"店舗画像" %>
+  <%= f.attachment_field :restaurant_images_images, multiple: true, direct: true, presigned: true %><br>
+  <span>※Ctrl押しながら複数選択する式でした</span><br>
+  
+  <%= f.label :"住所" %>
+  <%= f.text_field :address %><br>
+
+  <%= f.label :"最寄駅" %>
+  <%= f.text_field :station_name %><br>
+
+  <%= f.label :"検索ワード" %>
+  <%= f.text_field :search_keyword %><br>
+
+  <%= f.label :"キャッチコピー" %>
+  <%= f.text_field :catch %><br>
+
+  <%= f.label :"席数" %>
+  <%= f.text_field :capacity %><br>
+
+  <%= f.label :"交通アクセス" %>
+  <%= f.text_field :access %><br>
+
+  <%= f.label :"HPのURL" %>
+  <%= f.text_field :urls %><br>
+
+  <%= f.label :"開店時間" %>
+  <%= f.text_field :open %><br>
+
+  <%= f.label :"閉店時間" %>
+  <%= f.text_field :close %><br>
+
+  <%= f.label :"宴会の最大予約可能人数" %>
+  <%= f.text_field :party_capacity %><br>
+
+  <p>こだわり検索</p>
+  <%= f.check_box :wifi %><%= f.label :"wifi" %>
+  <%= f.text_field :wifi_memo %><br>
+
+  <%= f.check_box :free_drink %><%= f.label :"飲み放題" %>
+  <%= f.text_field :free_drink_memo %><br>
+
+  <%= f.check_box :free_food %><%= f.label :"食べ放題" %>
+  <%= f.text_field :free_food_memo %><br>
+
+  <%= f.check_box :private_room %><%= f.label :"個室" %>
+  <%= f.text_field :private_room_memo %><br>
+
+  <%= f.check_box :horigotatsu %><%= f.label :"掘りごたつ" %>
+  <%= f.text_field :horigotatsu_memo %><br>
+
+  <%= f.check_box :tatami %><%= f.label :"お座敷" %>
+  <%= f.text_field :tatami_memo %><br>
+
+  <%= f.check_box :card %><%= f.label :"カード支払い" %>
+  <%= f.text_field :card_memo %><br>
+
+  <%= f.check_box :non_smoking %><%= f.label :"禁煙席" %>
+  <%= f.text_field :non_smoking_memo %><br>
+
+  <%= f.check_box :charter %><%= f.label :"貸切予約" %>
+  <%= f.text_field :charter_memo %><br>
+
+  <%= f.check_box :ktai %><%= f.label :"携帯電話利用可" %>
+  <%= f.text_field :ktai_memo %><br>
+
+  <%= f.check_box :parking %><%= f.label :"駐車場" %>
+  <%= f.text_field :parking_memo %><br>
+
+  <%= f.check_box :barrier_free %><%= f.label :"バリアフリー" %>
+  <%= f.text_field :barrier_free_memo %><br>
+
+  <%= f.check_box :karaoke %><%= f.label :"カラオケ" %>
+  <%= f.text_field :karaoke_memo %><br>
+
+  <%= f.check_box :tv %><%= f.label :"テレビ・プロジェクター" %>
+  <%= f.text_field :tv_memo %><br>
+
+  <%= f.check_box :english %><%= f.label :"英語メニュー" %>
+  <%= f.text_field :english_memo %><br>
+
+  <%= f.check_box :pet %><%= f.label :"ペット連れ可" %>
+  <%= f.text_field :pet_memo %><br>
+
+  <%= f.check_box :child %><%= f.label :"お子様連れ可" %>
+  <%= f.text_field :child_memo %><br>
+
+  <%= f.check_box :lunch %><%= f.label :"ランチ営業" %>
+  <%= f.text_field :lunch_memo %><br>
+
+  <%= f.check_box :midnight %><%= f.label :"23時以降も営業" %>
+  <%= f.text_field :midnight_memo %><br>
+
+  <%= f.check_box :other_memo %><%= f.label :"その他設備" %><br>
+
+  <%= f.submit %>
+<% end %>

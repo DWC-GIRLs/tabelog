@@ -1,0 +1,13 @@
+<h1>Owners::Restaurants#show</h1>
+
+<h1><%= @restaurant.name %></h1>
+<br>
+
+<p>ロゴ画像</p><br>
+<%= attachment_image_tag @restaurant, :logo_image, :fill, 200, 200 %><br>
+
+<p>店舗画像</p><br>
+<% @restaurant.restaurant_images.each do |image| %>
+  <%= attachment_image_tag image, :image, :fill, 100, 100 %>
+<% end %>
+
