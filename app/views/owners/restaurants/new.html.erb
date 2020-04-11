@@ -1,5 +1,7 @@
 <h1>Owners::Restaurants#new</h1>
 
+<p><%= flash[:error] %></p>
+
 <%= form_with model: @new_restaurant, url: owners_restaurants_path do |f| %>
   <%= f.label :"店舗名" %>
   <%= f.text_field :name %><br>
