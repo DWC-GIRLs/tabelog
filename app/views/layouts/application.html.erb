@@ -15,10 +15,15 @@
       <header>
         <div class="row">
           <%= @page_title %>
+          <!-- account -->
           <% if account_signed_in? %>
             <%= render 'accounts/shared/login_header' %><!-- ユーザーサインイン時 -->
           <% else %>
             <%= render 'accounts/shared/signout_header' %><!-- ユーザーサインアウト時 -->
+          <% end %>
+          <!-- owner -->
+          <% if owner_signed_in? %>
+            <%= render 'layouts/owner_header' %>
           <% end %>
         </div>
         <div class="row">
@@ -37,4 +42,5 @@
       </footer>
     </div>
   </body>
+
 </html>

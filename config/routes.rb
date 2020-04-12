@@ -8,8 +8,12 @@ Rails.application.routes.draw do
   }
   # get 'accounts/login' => 'devise/sessions#new'
   # get 'accounts/member_entry' => 'devise_invitable/registrations#new'
-
-  devise_for :owners
+  
+  devise_for :owners, controllers: {
+    sessions: 'owners/sessions',
+    passwords: 'owners/passwords',
+    registrations: 'owners/registrations'
+  }
 
   ######## ここからアカウント ########
   scope module: :accounts do
@@ -52,23 +56,16 @@ Rails.application.routes.draw do
 
   ######## ここからオーナー ########
   namespace :owners do
-    get 'booking_histories/show'
-    get 'booking_histories/index'
-    get 'booking_histories/update'
-
-    get 'restaurants/mypage'
-    get 'restaurants/new'
-    get 'restaurants/create'
+    resources :booking_historys, only: [:show, :index, :update]
+    resources :restaurants
     get 'restaurants/welcome'
-    get 'restaurants/edit'
-    get 'restaurants/update'
     get 'restaurants/confirm'
     get 'restaurants/goodbye'
-    get 'restaurants/destroy'
-
-    get 'owners/mypage'
-    get 'owners/edit'
-    get 'owners/update'
   end
 
+  scope module: :owners do
+    resources :owners, only: [:edit, :update]
+    get 'owners/mypage'
+  end
+  
 end

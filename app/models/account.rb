@@ -9,6 +9,7 @@ class Account < ApplicationRecord
   has_many :reviews,          dependent: :destroy
 
   attachment :profile_image
+  attachment :cover_image
 
   # omniauthのコールバック時に発火
   def self.find_or_create_from_oauth(auth)
@@ -28,6 +29,5 @@ class Account < ApplicationRecord
     # self.profile_image = info.['picture']
     # self.save!
   end
-
 
 end

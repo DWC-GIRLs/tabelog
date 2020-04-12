@@ -39,6 +39,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'hirb'
+  gem 'hirb-unicode'
 end
 
 group :development do
@@ -62,7 +64,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # .env使用するため
 gem 'dotenv-rails'
-# ログイン機能
+# user authentication
 gem 'devise'
 
 gem 'google-api-client'
@@ -74,7 +76,7 @@ gem 'omniauth-line'
 gem 'omniauth-amazon'
 # デバッグ
 gem 'pry-byebug'
-# 画像挿入
+# image upload
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 # デザイン

@@ -130,6 +130,13 @@ GEM
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     httpclient (2.8.3)
+    hirb (0.7.3)
+    hirb-unicode (0.0.5)
+      hirb (~> 0.5)
+      unicode-display_width (~> 0.1.1)
+    http-accept (1.7.0)
+    http-cookie (1.0.3)
+      domain_name (~> 0.5)
     i18n (1.8.2)
       concurrent-ruby (~> 1.0)
     io-like (0.3.1)
@@ -317,6 +324,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.7)
+    unicode-display_width (0.1.1)
     warden (1.2.8)
       rack (>= 2.0.6)
     web-console (3.7.0)
@@ -343,6 +351,8 @@ DEPENDENCIES
   devise
   dotenv-rails
   google-api-client
+  hirb
+  hirb-unicode
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)

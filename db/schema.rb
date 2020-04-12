@@ -11,7 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2020_04_09_103047) do
-
+  
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -28,7 +28,8 @@ ActiveRecord::Schema.define(version: 2020_04_09_103047) do
     t.integer "sex", default: 0, null: false
     t.integer "birthday"
     t.integer "era"
-    t.string "cover_image"
+    t.string "cover_image_id"
+    t.string "profile_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "profile_image"
@@ -70,9 +71,7 @@ ActiveRecord::Schema.define(version: 2020_04_09_103047) do
     t.string "last_name"
     t.string "first_kana"
     t.string "last_kana"
-    t.string "nick_name"
     t.integer "phone_number"
-    t.integer "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_owners_on_email", unique: true
@@ -95,7 +94,7 @@ ActiveRecord::Schema.define(version: 2020_04_09_103047) do
 
   create_table "restaurant_images", force: :cascade do |t|
     t.integer "restaurant_id", null: false
-    t.string "image", null: false
+    t.string "image_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -103,7 +102,7 @@ ActiveRecord::Schema.define(version: 2020_04_09_103047) do
   create_table "restaurants", force: :cascade do |t|
     t.integer "shop_id"
     t.string "name"
-    t.string "logo_image"
+    t.string "logo_image_id"
     t.string "name_kana"
     t.string "address"
     t.string "station_name"
@@ -119,30 +118,48 @@ ActiveRecord::Schema.define(version: 2020_04_09_103047) do
     t.integer "capacity"
     t.string "access"
     t.string "urls"
-    t.string "photo"
     t.string "open"
     t.string "close"
     t.integer "party_capacity"
     t.integer "wifi", default: 0
+    t.string "wifi_memo"
     t.integer "free_drink", default: 0
+    t.string "free_drink_memo"
     t.integer "free_food", default: 0
+    t.string "free_food_memo"
     t.integer "private_room", default: 0
+    t.string "private_room_memo"
     t.integer "horigotatsu", default: 0
+    t.string "horigotatsu_memo"
     t.integer "tatami", default: 0
+    t.string "tatami_memo"
     t.integer "card", default: 0
+    t.string "card_memo"
     t.integer "non_smoking", default: 0
+    t.string "non_smoking_memo"
     t.integer "charter", default: 0
+    t.string "charter_memo"
     t.integer "ktai", default: 0
+    t.string "ktai_memo"
     t.integer "parking", default: 0
+    t.string "parking_memo"
     t.integer "barrier_free", default: 0
-    t.integer "other_memo", default: 0
+    t.string "barrier_free_memo"
     t.integer "karaoke", default: 0
+    t.string "karaoke_memo"
     t.integer "tv", default: 0
+    t.string "tv_memo"
     t.integer "english", default: 0
+    t.string "english_memo"
     t.integer "pet", default: 0
+    t.string "pet_memo"
     t.integer "child", default: 0
+    t.string "child_memo"
     t.integer "lunch", default: 0
+    t.string "lunch_memo"
     t.integer "midnight", default: 0
+    t.string "midnight_memo"
+    t.string "other_memo"
     t.string "shop_detail_memo"
     t.string "coupon_urls"
     t.datetime "created_at", null: false
@@ -151,7 +168,7 @@ ActiveRecord::Schema.define(version: 2020_04_09_103047) do
 
   create_table "review_images", force: :cascade do |t|
     t.integer "review_id"
-    t.string "image", null: false
+    t.string "image_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -159,13 +176,13 @@ ActiveRecord::Schema.define(version: 2020_04_09_103047) do
   create_table "reviews", force: :cascade do |t|
     t.integer "account_id"
     t.integer "rate_id"
+    t.integer "restaurant_id"
     t.integer "status", default: 0, null: false
     t.string "comment", null: false
     t.integer "unit_price"
     t.integer "meal_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "restaurant_id"
   end
 
 end

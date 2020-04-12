@@ -1,0 +1,81 @@
+<h1>Owners::Restaurants#show</h1>
+
+<h1><%= @restaurant.name %></h1><br>
+<p>shop id => <%= @restaurant.shop_id %></p>
+<p>kana => <%= @restaurant.name_kana %></p>
+<p>address => <%= @restaurant.address %></p>
+<p>station => <%= @restaurant.station_name %></p>
+<p>search_keyword => <%= @restaurant.search_keyword %></p>
+<p>catch => <%= @restaurant.catch %></p>
+<p>capacity => <%= @restaurant.capacity %></p>
+<p>access => <%= @restaurant.access %></p>
+<p>urls => <%= @restaurant.urls %></p>
+<p>open => <%= @restaurant.open %></p>
+<p>close => <%= @restaurant.close %></p>
+<p>party_capacity => <%= @restaurant.party_capacity %></p>
+
+<p>ロゴ画像</p><br>
+<%= attachment_image_tag @restaurant, :logo_image, :fill, 200, 200 %><br>
+
+<p>店舗画像</p><br>
+<% @restaurant.restaurant_images.each do |image| %>
+  <%= attachment_image_tag image, :image, :fill, 100, 100 %>
+<% end %>
+
+<p>
+  wifi => <%= @restaurant.wifi %> : <%= @restaurant.wifi_memo %>
+</p>
+<p>
+  free_drink => <%= @restaurant.free_drink %> : <%= @restaurant.free_drink_memo %>
+</p>
+<p>
+  free_food => <%= @restaurant.free_food %> : <%= @restaurant.free_food_memo %>
+</p>
+<p>
+  private_room => <%= @restaurant.private_room %> : <%= @restaurant.private_room_memo %>
+</p>
+<p>
+  horigotatu <%= @restaurant.horigotatsu %> ; <%= @restaurant.horigotatsu_memo %>
+</p>
+<p>
+  tatami <%= @restaurant.tatami %> ; <%= @restaurant.tatami_memo %>
+</p>
+<p>
+  card <%= @restaurant.card %> : <%= @restaurant.card_memo %>
+</p>
+<p>
+  non_smoking <%= @restaurant.non_smoking %> : <%= @restaurant.non_smoking_memo %>
+</p>
+<p>
+  charter <%= @restaurant.charter %> : <%= @restaurant.charter_memo %>
+</p>
+<p>
+  ktai <%= @restaurant.ktai %> : <%= @restaurant.ktai_memo %>
+</p>
+<p>
+  parking <%= @restaurant.parking %> : <%= @restaurant.parking_memo %>
+</p>
+<p>
+  barrier_free <%= @restaurant.barrier_free %> ; <%= @restaurant.barrier_free_memo %>
+</p>
+<p>
+  karaoke <%= @restaurant.karaoke %> : <%= @restaurant.karaoke_memo %>
+</p>
+<p>
+  tv <%= @restaurant.tv %> : <%= @restaurant.tv_memo %>
+</p>
+<p>
+  english <%= @restaurant.english %> : <%= @restaurant.english_memo %>
+</p>
+<p>
+  pet <%= @restaurant.pet %> : <%= @restaurant.pet_memo %>
+</p>
+<p>
+  child <%= @restaurant.child %> : <%= @restaurant.child_memo %>
+</p>
+<p>
+  lunch <%= @restaurant.lunch %> : <%= @restaurant.lunch_memo %>
+</p>
+<p>
+  midnight <%= @restaurant.midnight %> : <%= @restaurant.midnight_memo %>
+</p>

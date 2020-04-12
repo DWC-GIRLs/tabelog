@@ -1,2 +1,7 @@
 <h1>Owners::Owners#mypage</h1>
-<p>Find me in app/views/owners/owners/mypage.html.erb</p>
+
+<%= current_owner.email %><br>
+<%= current_owner.first_name %><br>
+<%= current_owner.last_name %><br>
+
+<%= link_to "new restaurant", new_owners_restaurant_path %>
