@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
-  
+
   devise_for :accounts, controllers: {
     sessions: 'accounts/sessions',
     passwords: 'accounts/passwords',
     registrations: 'accounts/registrations',
     omniauth_callbacks: 'accounts/omniauth_callbacks'
   }
+  # get 'accounts/login' => 'devise/sessions#new'
+  # get 'accounts/member_entry' => 'devise_invitable/registrations#new'
+
   devise_for :owners
 
   ######## ここからアカウント ########
@@ -44,8 +47,6 @@ Rails.application.routes.draw do
     get 'accounts/welcome'
     get 'accounts/confirm'
     get 'accounts/goodbye'
-    get 'accounts/login' => 'devise/sessions#new'
-    get 'accounts/member_entry' => 'registrations#new'
   end
 
 
