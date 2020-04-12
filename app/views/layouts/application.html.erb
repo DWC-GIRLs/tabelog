@@ -1,18 +1,46 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Tabelog</title>
+    <title><%= page_title %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag('favicon.ico') %>
   </head>
 
   <body>
-    <% if owner_signed_in? %>
-      <%= render 'layouts/owner_header' %>
-    <% end %>
-    <%= yield %>
+    <div class="container">
+      <header>
+        <div class="row">
+          <%= @page_title %>
+          <!-- account -->
+          <% if account_signed_in? %>
+            <%= render 'accounts/shared/login_header' %><!-- ユーザーサインイン時 -->
+          <% else %>
+            <%= render 'accounts/shared/signout_header' %><!-- ユーザーサインアウト時 -->
+          <% end %>
+          <!-- owner -->
+          <% if owner_signed_in? %>
+            <%= render 'layouts/owner_header' %>
+          <% end %>
+        </div>
+        <div class="row">
+          <%= link_to root_path do %>
+            <%= image_tag 'logo.jpg', alt: "tabelog logo", class: "brand-logo"%>
+          <% end %>
+        </div>
+      </header>
+
+      <main>
+        <%= yield %>
+      </main>
+
+      <footer>
+
+      </footer>
+    </div>
   </body>
+
 </html>
