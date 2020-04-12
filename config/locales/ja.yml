@@ -1,0 +1,22 @@
+#カラムの日本語化
+ja:
+  activerecord:
+    models:
+      account: "アカウント"
+    attributes:
+      account:
+        first_name: 姓
+        last_name: 名
+        first_kana: セイ
+        last_kana: メイ
+        name: アカウント名
+        nick_name: ニックネーム
+        phone_number: 電話番号
+        sex: 性別
+        birthday: 生年月日
+        era: 年代
+        cover_image: カバー画像
+        profile_image: プロフィール画像
+        password: パスワード
+        password_confirmation: パスワード確認
+        email: メールアドレス
