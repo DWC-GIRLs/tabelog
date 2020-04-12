@@ -16,3 +16,29 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+// ヘッダー
+body {
+  border-top: 2px solid orange;
+}
+
+header {
+  padding-top: 10px;
+  position: relative;
+}
+
+.nav-list {
+  position: absolute;
+  list-style: none;
+  top: 12px;
+  right: 22px;
+}
+
+.nav-list-item {
+  display: inline;
+  margin-right: 20px;
+}
+
+.brand-logo {
+  width: 160px;
+}
