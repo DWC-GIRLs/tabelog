@@ -1,7 +1,14 @@
-<h2>Forgot your password?</h2>
+<%= @page_title = "仮ログインフォーム" %>
+
+<h3><%= @page_title %></h3>
+
+<p>
+  以下のフォームに、食べログへご登録のメールアドレスを入力してください。<br>
+  ※メールに記載されているURLは、必ずデフォルトのブラウザで開いてください。Gmail等、アプリ内のブラウザで開いた場合、他サービスの認証方法との紐付けを正常に行うことができません。
+</p>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= render "accounts/shared/error_messages", resource: resource %>
 
   <div class="field">
     <%= f.label :email %><br />
@@ -9,8 +16,6 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
+    <%= f.submit "送信" %>
   </div>
 <% end %>
-
-<%= render "devise/shared/links" %>
