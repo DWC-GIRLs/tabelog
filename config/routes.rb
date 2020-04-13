@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   }
   # get 'accounts/login' => 'devise/sessions#new'
   # get 'accounts/member_entry' => 'devise_invitable/registrations#new'
-  
+
   devise_for :owners, controllers: {
     sessions: 'owners/sessions',
     passwords: 'owners/passwords',
@@ -20,7 +20,17 @@ Rails.application.routes.draw do
     # homes
     root 'homes#top'
     get 'help/beginner/' => 'homes#about', as: :about
-
+    # accounts
+    resources :accounts, only: [:edit, :update, :destroy] do
+      get 'prof' => 'accounts#mypage', as: :mypage, on: :member
+      collection do
+        get 'member_entry_finish' => 'accounts#welcome', as: :welcom
+        get 'logout' => 'accounts#logout', as: :logout
+        get 'confirm' => 'accounts#confirm', as: :confirm
+        get 'goodbye' => 'accounts#goodbye', as: :goodbye
+      end
+    end
+    # search
     get 'search/area'
     get 'search/keyword'
     get 'search/genre'
@@ -42,15 +52,6 @@ Rails.application.routes.draw do
     get 'reviews/destroy'
     get 'reviews/rate_create'
     get 'reviews/rate_update'
-
-    get 'accounts/mypage'
-    get 'accounts/edit'
-    get 'accounts/update'
-    get 'accounts/destroy'
-    get 'accounts/logout'
-    get 'accounts/welcome'
-    get 'accounts/confirm'
-    get 'accounts/goodbye'
   end
 
 
@@ -67,5 +68,5 @@ Rails.application.routes.draw do
     resources :owners, only: [:edit, :update]
     get 'owners/mypage'
   end
-  
+
 end
