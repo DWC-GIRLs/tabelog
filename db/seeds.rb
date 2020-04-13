@@ -9,7 +9,7 @@ response = Net::HTTP.get(uri)
 parsed_response = JSON.parse(response)
 shops = parsed_response["results"]["shop"]
 shops.each do |shop|
-  Restaurant.create(
+  Restaurant.create!(
     shop_id: shop['id'],
     name: shop['name']
   )
