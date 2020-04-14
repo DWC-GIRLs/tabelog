@@ -84,3 +84,7 @@ gem "refile-mini_magick"
 # デザイン
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-rails'
+
+#DB整形表示
+gem 'hirb'
+gem 'hirb-unicode'
