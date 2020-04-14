@@ -5,7 +5,7 @@ require 'dotenv'
 Dotenv.load
 
 
-uri = URI.parse("http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=#{ENV['RESTAURANT_API_KEY']}&count=3&name=a&format=json")
+uri = URI.parse("http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=#{ENV['RESTAURANT_API_KEY']}&count=100&keyword=%E4%BA%BA%E6%B0%97&format=json")
 response = Net::HTTP.get(uri)
 parsed_response = JSON.parse(response)
 shops = parsed_response["results"]["shop"]
