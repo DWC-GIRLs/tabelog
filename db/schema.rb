@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_12_155529) do
+ActiveRecord::Schema.define(version: 2020_04_14_131653) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -137,7 +137,6 @@ ActiveRecord::Schema.define(version: 2020_04_12_155529) do
     t.integer "charter", default: 0
     t.string "charter_memo"
     t.integer "ktai", default: 0
-    t.string "ktai_memo"
     t.integer "parking", default: 0
     t.string "parking_memo"
     t.integer "barrier_free", default: 0
