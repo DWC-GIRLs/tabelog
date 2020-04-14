@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_12_155529) do
+ActiveRecord::Schema.define(version: 2020_04_14_052828) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -100,7 +100,7 @@ ActiveRecord::Schema.define(version: 2020_04_12_155529) do
   end
 
   create_table "restaurants", force: :cascade do |t|
-    t.string "shop_id"
+    t.integer "shop_id"
     t.string "name"
     t.string "logo_image_id"
     t.string "name_kana"
@@ -122,6 +122,7 @@ ActiveRecord::Schema.define(version: 2020_04_12_155529) do
     t.string "close"
     t.integer "party_capacity"
     t.integer "wifi", default: 0
+    t.string "wifi_memo"
     t.integer "free_drink", default: 0
     t.string "free_drink_memo"
     t.integer "free_food", default: 0
@@ -133,7 +134,9 @@ ActiveRecord::Schema.define(version: 2020_04_12_155529) do
     t.integer "tatami", default: 0
     t.string "tatami_memo"
     t.integer "card", default: 0
+    t.string "card_memo"
     t.integer "non_smoking", default: 0
+    t.string "non_smoking_memo"
     t.integer "charter", default: 0
     t.string "charter_memo"
     t.integer "ktai", default: 0
@@ -143,18 +146,26 @@ ActiveRecord::Schema.define(version: 2020_04_12_155529) do
     t.integer "barrier_free", default: 0
     t.string "barrier_free_memo"
     t.integer "karaoke", default: 0
+    t.string "karaoke_memo"
     t.integer "tv", default: 0
+    t.string "tv_memo"
     t.integer "english", default: 0
+    t.string "english_memo"
     t.integer "pet", default: 0
+    t.string "pet_memo"
     t.integer "child", default: 0
     t.string "child_memo"
     t.integer "lunch", default: 0
+    t.string "lunch_memo"
     t.integer "midnight", default: 0
+    t.string "midnight_memo"
     t.string "other_memo"
     t.string "shop_detail_memo"
     t.string "coupon_urls"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["id", "user_id"], name: "index_restaurants_on_id_and_user_id"
   end
 
   create_table "review_images", force: :cascade do |t|
