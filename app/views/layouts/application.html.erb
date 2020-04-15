@@ -11,8 +11,8 @@
   </head>
 
   <body>
-    <div class="container">
-      <header>
+    <header>
+      <div class="container">
         <div class="row">
           <%= @page_title %>
           <!-- account -->
@@ -31,19 +31,22 @@
             <%= image_tag 'logo.jpg', alt: "tabelog logo", class: "brand-logo"%>
           <% end %>
         </div>
-      </header>
+      </div>
+    </header>
 
+    <div class="container">
       <main>
         <% if flash[:notice] %>
           <div class="alert"><%= flash[:notice] %></div>
         <% end %>
         <%= yield %>
       </main>
+    </div>
 
+    <div class="container">
       <footer>
 
       </footer>
     </div>
   </body>
-
 </html>
