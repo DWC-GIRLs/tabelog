@@ -3,58 +3,20 @@
 class Accounts::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def facebook
-    callback_from :facebook
+    account = Account.find_omniauth(request.env["omniauth.auth"])
+    if account.persisted? #DBに保存済みか（オブジェクトが新しくない&&削除されてない場合にtrue）
+      sign_in_and_redirect account, event: :authentication #サインイン後、保存された場所にリダイレクトしてから、after_sign_in_path_forで指定されたURLにリダイレクト
+      set_flash_message(:notice, :success, kind: "#{account.provider}".capitalize) if is_navigational_format? #.capitalize(先頭のみ大文字)
+    else # transaction発火したら
+      session["devise.#{provider}_data"] = request.env["omniauth.auth"].except("extra") #extraは除く
+      redirect_to new_user_registration_url
+    end
   end
 
-  # def google_oauth2
-  #   account = Account.find_for_google_oauth2(request.env["omniauth.auth"])
-  #   if account.persisted?
-  #     flash[:notice] = I18n.t 'devise.omniauth_callbacks.success', kind: 'Google'
-  #     sign_in_and_redirect account, :event => :authentication
-  #   else
-  #     session["devise.google_data"] = request.env["omniauth.auth"]
-  #     redirect_to new_user_registration_url
-  #   end
-  # end
-
-
-  def line
-    omniauth = request.env['omniauth.auth']
-    if omniauth.present?
-      profile = Account.find_by(provider: omniauth['provider'], uid: omniauth['uid'])
-      if profile
-        profile.set_values(omniauth)
-        sign_in(:account, profile.account)
-      else
-        profile = Account.new(provider: omniauth['provider'], uid: omniauth['uid'])
-        email = omniauth['info']['email'] ? omniauth['info']['email'] : Faker::Internet.email
-        profile.user = current_user || Account.create!(email: email, name: omniauth['info']['name'], password: Devise.friendly_token[0, 20])
-        account_profile = profile.set_values(omniauth)
-        sign_in(:account, profile.account)
-        redirect_to new_account_registration_path and return
-      end
-    end
+  # find_omniauth 失敗時
+  def failure
+    flash[:notice] = "SNS認証に失敗しました"
     redirect_to root_path
   end
-
-  # More info at:
-  # https://github.com/plataformatec/devise#omniauth
-
-  # GET|POST /resource/auth/twitter
-  # def passthru
-  #   super
-  # end
-
-  # GET|POST /users/auth/twitter/callback
-  # def failure
-  #   super
-  # end
-
-  # protected
-
-  # The path used when OmniAuth fails
-  # def after_omniauth_failure_path_for(scope)
-  #   super(scope)
-  # end
 
 end

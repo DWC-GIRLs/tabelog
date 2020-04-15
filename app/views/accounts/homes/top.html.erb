@@ -1,6 +1,7 @@
 <h1>Accounts::Homes#top</h1>
 <p>Find me in app/views/accounts/homes/top.html.erb</p>
-<p><%= current_account.nick_name %></p>
-<p><%= current_account.provider %></p>
-<p><%= current_account.uid %></p>
-<p><%= current_account.email %></p>
+<% if account_signed_in? %>
+  <%= current_account.nick_name %>
+  <%= current_account.email %>
+<% end %>
+<%= link_to "ログアウト", destroy_account_session_path, method: :delete %>

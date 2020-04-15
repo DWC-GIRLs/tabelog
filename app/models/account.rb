@@ -12,22 +12,21 @@ class Account < ApplicationRecord
   attachment :cover_image
 
   # omniauthのコールバック時に発火
-  def self.find_or_create_from_oauth(auth)
-    Account.find_or_create_by(provider: auth.provider, uid: auth.uid) do |account|
-      account.nick_name  = auth.info.nickname || auth.info.name
-      account.avatar_url = auth.info.image
-      account.email      = Account.dummy_email(auth)
-      account.password   = Devise.friendly_token[0, 20]
+  def self.find_omniauth(auth)
+    account = Account.find_by(provider: auth.provider, uid: auth.uid) #送られてきたデータのproviderとuidを元に探す
+    unless account #レコードが見つからない時に発火
+      Account.transaction do
+        account = Account.create!(
+          provider:         auth.provider,
+          uid:              auth.uid,
+          nick_name:        auth.info.name,
+          email:            auth.info.email,
+          # profile_image_id: auth.info.image,
+          password:         Devise.friendly_token[0,20] #ランダムにパスワード作成
+        )
+      end
     end
-  end
-
-  def set_values(omniauth)
-    return if provider.to_s != omniauth['provider'].to_s || uid != omniauth['uid']
-    info = omniauth['info']
-    self.nick_name = info['name']
-    self.password = Devise.friendly_token[0, 20] # ランダムにパスワード作成
-    # self.profile_image = info.['picture']
-    # self.save!
+    account
   end
 
 end
