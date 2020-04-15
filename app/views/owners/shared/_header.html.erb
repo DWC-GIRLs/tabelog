@@ -1,0 +1,7 @@
+<% if owner_signed_in? %>
+  <%= link_to "logout", destroy_owner_session_path, method: :delete, class:"nav-link" %>
+  <%= link_to "mypage", owners_mypage_path(current_owner), class:"nav-link" %>
+  <%= link_to "new restaurant", new_owners_restaurant_path, class:"nav-link" %>
+<% else %>
+  <%= link_to  %>
+<% end %>
