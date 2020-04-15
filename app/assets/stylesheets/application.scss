@@ -17,6 +17,29 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+main {
+  padding: 50px;
+}
+
+// 可変margin padding 0~100
+@for $i from 0 through 10 {
+  .m-#{$i} {margin: #{$i * 10}px;}
+  .mt-#{$i} {margin-top: #{$i * 10}px;}
+  .mr-#{$i} {margin-right: #{$i * 10}px;}
+  .mb-#{$i} {margin-bottom: #{$i * 10}px;}
+  .ml-#{$i} {margin-left: #{$i * 10}px;}
+  .mx-#{$i} {margin: 0 #{$i * 10}px;}
+  .my-#{$i} {margin: #{$i * 10}px 0;}
+
+  .p-#{$i} {padding: #{$i * 10}px;}
+  .pt-#{$i} {padding-top: #{$i * 10}px;}
+  .pr-#{$i} {padding-right: #{$i * 10}px;}
+  .pb-#{$i} {padding-bottom: #{$i * 10}px;}
+  .pl-#{$i} {padding-left: #{$i * 10}px;}
+  .px-#{$i} {padding: 0 #{$i * 10}px;}
+  .py-#{$i} {padding: #{$i * 10i}px 0;}
+}
+
 // ヘッダー
 body {
   border-top: 2px solid orange;
@@ -41,4 +64,14 @@ header {
 
 .brand-logo {
   width: 160px;
+}
+
+// ヘッダーと同じ色のボタン
+.btn-orange {
+  background-color: orange;
+  color: white;
+  &:hover{
+    background-color: #ff8902;
+    color: white;
+  }
 }

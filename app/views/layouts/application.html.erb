@@ -15,22 +15,19 @@
       <header>
         <div class="row">
           <%= @page_title %>
-          <!-- account -->
-          <% if account_signed_in? %>
-            <%= render 'accounts/shared/login_header' %><!-- ユーザーサインイン時 -->
-          <% else %>
-            <%= render 'accounts/shared/signout_header' %><!-- ユーザーサインアウト時 -->
-          <% end %>
           <!-- owner -->
-          <% if owner_signed_in? %>
-            <%= render 'layouts/owner_header' %>
+          <% if request.fullpath.include? "owner" %>
+            <%= render 'owners/shared/header' %>
+          <% else %>
+          <!-- account -->
+            <% if account_signed_in? %>
+              <%= render 'accounts/shared/login_header' %><!-- ユーザーサインイン時 -->
+            <% else %>
+              <%= render 'accounts/shared/signout_header' %><!-- ユーザーサインアウト時 -->
+            <% end %>
           <% end %>
         </div>
-        <div class="row">
-          <%= link_to root_path do %>
-            <%= image_tag 'logo.jpg', alt: "tabelog logo", class: "brand-logo"%>
-          <% end %>
-        </div>
+        <!-- owner headerとリンク干渉するのでロゴ移動したお -->
       </header>
 
       <main>
