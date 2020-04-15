@@ -1,7 +1,20 @@
 <% if owner_signed_in? %>
-  <%= link_to "logout", destroy_owner_session_path, method: :delete, class:"nav-link" %>
-  <%= link_to "mypage", owners_mypage_path(current_owner), class:"nav-link" %>
-  <%= link_to "new restaurant", new_owners_restaurant_path, class:"nav-link" %>
+  <ul class="nav-list">
+    <li class="nav-list-item"><%= link_to "logout", destroy_owner_session_path, method: :delete %></li>
+    <li class="nav-list-item"><%= link_to "mypage", owners_mypage_path(current_owner) %></li>
+    <li class="nav-list-item"><%= link_to "new restaurant", new_owners_restaurant_path %></li>
+  </ul>
+  <% message_for_owner = "ｲﾓｫ…#{current_owner.first_name}ｻｧﾝ…ｵｲﾓｫ…" %>
 <% else %>
-  <%= link_to  %>
+  <ul class="nav-list">
+    <li class="nav-list-item"><%= link_to "login", new_owner_session_path %></li>
+    <li class="nav-list-item"><%= link_to 'signup', new_owner_registration_path %></li>
+  </ul>
+  <% message_for_owner = "ｲﾓｫ…ｵｲﾓｫ…ｵｲﾓﾀﾞﾖｫ…" %>
 <% end %>
+<div class="row" style="height:60px;">
+  <%= link_to new_owner_session_path do %>
+    <%= image_tag 'potato.png', style:"height:100%;" %>
+  <% end %>
+  <span class="align-top"><%= message_for_owner %></span>
+</div>
