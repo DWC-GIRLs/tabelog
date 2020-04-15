@@ -4,5 +4,7 @@
   <li class="nav-list-item"><%= link_to "無料会員登録", :new_account_session %></li>
   <li class="nav-list-item"><a href="#">予約確認</a></li>
   <li class="nav-list-item"><a href="#">行ったお店</a></li>
-  <li class="nav-list-item"><a href="#">ログイン</a></li>
+  <% if request.path != "/accounts/sign_in" %>
+    <li class="nav-list-item"><a href="#">ログイン</a></li>
+  <% end %>
 </ul>
