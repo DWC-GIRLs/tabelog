@@ -136,7 +136,6 @@ ActiveRecord::Schema.define(version: 2020_04_14_131653) do
     t.integer "non_smoking", default: 0
     t.integer "charter", default: 0
     t.string "charter_memo"
-    t.integer "ktai", default: 0
     t.integer "parking", default: 0
     t.string "parking_memo"
     t.integer "barrier_free", default: 0
