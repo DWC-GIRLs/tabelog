@@ -5,107 +5,31 @@ require 'dotenv'
 Dotenv.load
 
 
-uri = URI.parse("http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=#{ENV['RESTAURANT_API_KEY']}&count=3&name=a&format=json")
+uri = URI.parse("http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=#{ENV['RESTAURANT_API_KEY']}&count=100&name=a&format=json")
 response = Net::HTTP.get(uri)
 parsed_response = JSON.parse(response)
 shops = parsed_response["results"]["shop"]
 shops.each do |shop|
 
-    if shop['wifi'] == "あり"
-      wifi = 1
-    else
-      wifi = 0
-    end
-    if ['free_drink'] == "あり"
-        free_drink = 1
-    else
-        free_drink = 0
-    end
-    if  ['free_food'] == "あり"
-        free_food = 1
-    else
-        free_food = 0
-    end
-    if ['private_room'] == "あり"
-        private_room = 1
-    else
-        private_room = 0
-    end
-    if ['horigotatsu'] == "あり"
-        horigotatsu = 1
-    else
-        horigotatsu = 0
-    end
-    if ['tatami'] == "あり"
-        tatami = 1
-    else
-        tatami = 0
-    end
-    if ['card'] == "利用可"
-        card = 1
-    else
-        card = 0
-    end
-    if ['non_smoking'] == "禁煙席"
-        non_smoking = 1
-    else
-        non_smoking = 0
-    end
-    if ['charter'] == "貸切可"
-        charter = 1
-    else
-        charter = 0
-    end
-    if ['ktai'] == "携帯電話OK"
-        ktai = 1
-    else
-        ktai = 0
-    end
-    if ['parking'] == "あり"
-        parking = 1
-    else
-        parking = 0
-    end
-    if ['barrier_free'] == "あり"
-        barrier_free = 1
-    else
-        barrier_free = 0
-    end
-    if ['karaoke'] == "あり"
-        karaoke = 1
-    else
-        karaoke = 0
-    end
-    if ['tv'] == "あり"
-        tv = 1
-    else
-        tv = 0
-    end
-    if ['english'] == "あり"
-        english = 1
-    else
-        english = 0
-    end
-    if ['pet'] == "可"
-        pet = 1
-    else
-        pet = 0
-    end
-    if ['child'] == "お子様連れ不可"
-        child = 0
-    else
-        child = 1
-    end
-    if ['lunch'] == "あり"
-        lunch = 1
-    else
-        lunch = 0
-    end
-    if ['midnight'] == "営業している"
-        midnight = 1
-    else
-        midnight = 0
-    end
+    wifi = shop['wifi'].include?("あり") ? 1 : 0
+    free_drink = shop['free_drink'].include?("あり ") ? 1 : 0
+    free_food = shop['free_food'].include?("あり ") ? 1 : 0
+    private_room = shop['private_room'].include?("あり ") ? 1 : 0
+    horigotatsu = shop['horigotatsu'].include?("あり ") ? 1 : 0
+    tatami = shop['tatami'].include?("あり ") ? 1 : 0
+    card = shop['card'].include?("利用可") ? 1 : 0
+    non_smoking = shop['non_smoking'].include?("全面禁煙") ? 1 : 0
+    charter = shop['charter'].include?("貸切可 ") ? 1 : 0
+    parking = shop['parking'].include?("あり ") ? 1 : 0
+    barrier_free = shop['barrier_free'].include?("あり ") ? 1 : 0
+    karaoke = shop['karaoke'].include?("あり") ? 1 : 0
+    tv = shop['tv'].include?("あり") ? 1 : 0
+    english = shop['english'].include?("あり") ? 1 : 0
+    pet = shop['pet'].include?("可") ? 1 : 0
+    child = shop['child'].include?("お子様連れ不可 ") ? 0 : 1
+    lunch = shop['lunch'].include?("あり") ? 1 : 0
+    midnight = shop['midnight'].include?("営業している") ? 1 : 0
+
 
     Restaurant.create!(
     shop_id: shop['id'],
@@ -132,14 +56,31 @@ shops.each do |shop|
     wifi: wifi,
     free_drink: free_drink,
     free_drink_memo: shop['free_drink'].sub!(/.+(?=：)：+/m, ""),
+    free_food: free_food,
     free_food_memo: shop['free_food'].sub!(/.+(?=：)：+/m, ""),
+    private_room: private_room,
     private_room_memo: shop['private_room'].sub!(/.+(?=：)：+/m, ""),
+    horigotatsu: horigotatsu,
     horigotatsu_memo: shop['horigotatsu'].sub!(/.+(?=：)：+/m, ""),
+    tatami: tatami,
     tatami_memo: shop['tatami'].sub!(/.+(?=：)：+/m, ""),
+    card: card,
+    non_smoking: non_smoking,
+    charter: charter,
     charter_memo: shop['charter'].sub!(/.+(?=：)：+/m, ""),
+    parking: parking,
     parking_memo: shop['parking'].sub!(/.+(?=：)：+/m, ""),
+    barrier_free: barrier_free,
     barrier_free_memo: shop['barrier_free'].sub!(/.+(?=：)：+/m, ""),
+    karaoke: karaoke,
+    tv: tv,
+    english: english,
+    child: child,
+    pet: pet,
+    child: child,
     child_memo: shop['child'].sub!(/.+(?=：)：+/m, ""),
+    lunch: lunch,
+    midnight: midnight,
     other_memo: shop['other_memo'],
     shop_detail_memo: shop['shop_detail_memo'],
     coupon_urls: shop['coupon_urls']['pc']
