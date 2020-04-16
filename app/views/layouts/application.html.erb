@@ -11,8 +11,8 @@
   </head>
 
   <body>
-    <div class="container">
-      <header>
+    <header>
+      <div class="container">
         <div class="row">
           <%= @page_title %>
           <!-- owner -->
@@ -28,19 +28,22 @@
           <% end %>
         </div>
         <!-- owner headerとリンク干渉するのでロゴ移動したお -->
-      </header>
+      </div>
+    </header>
 
+    <div class="container">
       <main>
         <% if flash[:notice] %>
           <div class="alert"><%= flash[:notice] %></div>
         <% end %>
         <%= yield %>
       </main>
+    </div>
 
+    <div class="container">
       <footer>
 
       </footer>
     </div>
   </body>
-
 </html>

@@ -1,2 +1,7 @@
-<h1>Accounts::Accounts#logout</h1>
-<p>Find me in app/views/accounts/accounts/logout.html.erb</p>
+<% @page_title = "ログアウト" %>
+
+<h4 class="logout-title">ログアウト</h4>
+<p>
+  なんちゃって食べログから完全にログアウトしました。<br>
+  再度ログインする場合は、<%= link_to "こちらからログイン", :new_account_session %>してください。
+</p>

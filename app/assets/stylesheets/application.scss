@@ -41,20 +41,19 @@ main {
 }
 
 // ヘッダー
-body {
-  border-top: 2px solid orange;
-}
-
 header {
   padding-top: 10px;
+  margin-bottom: 10px;
   position: relative;
+  border-top: 2px solid orange;
+  box-shadow: 0 2px 2px -1px #eeece4;
 }
 
 .nav-list {
   position: absolute;
   list-style: none;
   top: 12px;
-  right: 22px;
+  right: 200px;
 }
 
 .nav-list-item {
@@ -63,7 +62,15 @@ header {
 }
 
 .brand-logo {
-  width: 160px;
+  width: 140px;
+}
+
+// ログアウト完了
+.logout-title {
+  font-weight: bold;
+  border-top: 3px solid #d6ceb4;
+  border-bottom: 3px solid #d6ceb4;
+  padding: 1rem 1rem 0.9rem 1.2rem;
 }
 
 // ヘッダーと同じ色のボタン
