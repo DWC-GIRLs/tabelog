@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     get 'help/beginner/' => 'homes#about', as: :about
     # accounts
     resources :accounts, only: [:edit, :update, :destroy] do
-      get 'prof' => 'accounts#mypage', as: :mypage, on: :member
+      get '' => 'accounts#mypage', as: :mypage, on: :member
       collection do
         get 'member_entry_finish' => 'accounts#welcome', as: :welcom
         get 'logout' => 'accounts#logout', as: :logout
@@ -31,7 +31,7 @@ Rails.application.routes.draw do
       end
     end
     # search
-    get 'search/area'
+    get ':areaname' => 'search#area', as: :search_area
     get 'search/keyword'
     get 'search/genre'
     get 'search/booking'
