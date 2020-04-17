@@ -5,10 +5,18 @@
   <li class="nav-list-item"><a href="#">予約確認</a></li>
   <li class="nav-list-item"><a href="#">行ったお店</a></li>
   <li class="nav-list-item"><a href="#">保存済み</a></li>
-  <li class="nav-list-item">
-    <%= link_to "マイページ", '#' %>
+  <li class="nav-list-item dropdown">
+    <%= link_to "マイページ", mypage_account_path(current_account) %>
+    <span data-toggle="dropdown">
+      <%= attachment_image_tag current_account, :profile_image, :fill, 27, 27, fallback: "potato.jpg", size: "27x27", class: "dropdown-toggle" %>
+    </span>
+    <ul class="dropdown-menu">
+  		<li class="dropdown-item"><%= link_to "設定", edit_account_path(current_account) %></li>
+  		<li class="dropdown-item"><%= link_to "ログアウト", destroy_account_session_path, method: :delete %></li>
+	  </ul>
   </li>
 </ul>
+
 <div class="row">
   <%= link_to root_path do %>
     <%= image_tag 'logo.jpg', alt: "tabelog logo", class: "brand-logo"%>
