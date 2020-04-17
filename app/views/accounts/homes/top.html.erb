@@ -1,6 +1,21 @@
-<h1>Accounts::Homes#top</h1>
-<p>Find me in app/views/accounts/homes/top.html.erb</p>
-<% if account_signed_in? %>
-  <%= current_account.nick_name %>
-  <%= current_account.email %>
+<!-- 検索窓 -->
+<p>検索窓</p>
+<%= form_tag :search_area, :method => 'get' do %>
+  <%= text_field_tag :search %>
+  <%= submit_tag '検索', class: "btn-orange" %>
 <% end %>
+
+<!-- エリア検索 -->
+<h3>エリアから探す</h3>
+<div class="top-card" style="width: 260px; height: 72px; border: 1px solid grey">
+  <div class="row">
+    <div class="col-md-4">
+      <%= image_tag 'potato_row.jpg', size: "70x70", alt: "東京", class: "card-img" %>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h4 class="card-title">東京</h4>
+      </div>
+    </div>
+  </div>
+</div>

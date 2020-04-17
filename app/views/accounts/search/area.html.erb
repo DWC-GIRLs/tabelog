@@ -1,2 +1,10 @@
-<h1>Accounts::Search#area</h1>
-<p>Find me in app/views/accounts/search/area.html.erb</p>
+<h3>検索結果<%= @restaurants.count %>件</h3>
+<ul><% @restaurants.each do |restaurant| %>
+  <li>
+    <p> ------------------- </p>
+    <%= restaurant.name %>
+    <%= restaurant.address %>
+    <%= restaurant.genre_name %>
+  </li>
+  <% end %>
+</ul>

@@ -31,7 +31,7 @@ Rails.application.routes.draw do
       end
     end
     # search
-    get ':areaname' => 'search#area', as: :search_area
+    get 'search/area'
     get 'search/keyword'
     get 'search/genre'
     get 'search/booking'

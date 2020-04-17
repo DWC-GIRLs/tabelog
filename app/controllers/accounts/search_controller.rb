@@ -1,5 +1,6 @@
 class Accounts::SearchController < ApplicationController
   def area
+    @restaurants = Restaurant.search_area(params[:search])
   end
 
   def keyword
