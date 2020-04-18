@@ -1,10 +1,19 @@
-<h3>検索結果<%= @restaurants.count %>件</h3>
-<ul><% @restaurants.each do |restaurant| %>
-  <li>
-    <p> ------------------- </p>
-    <%= restaurant.name %>
-    <%= restaurant.address %>
-    <%= restaurant.genre_name %>
-  </li>
-  <% end %>
-</ul>
+<% @page_title = "#{params[:search]}の全てのお店" %>
+
+<div class="row">
+  <div class="col-xs-6 col-md-3">
+    <h4>エリアから探す</h4><br>
+    <h4>ジャンルから探す</h4>
+  </div>
+
+  <div class="col-xs-12 col-md-9">
+    <h3>検索結果<%= @restaurants.count %>件</h3>
+    <ul><% @restaurants.each do |restaurant| %>
+      <li>
+        <h4><%= restaurant.name %></h4>/<p><%= restaurant.genre_name %></p>
+        <%= attachment_image_tag restaurant, :logo_image, :fill, 150, 150, fallback: "potato_row.jpg", size: "150x150" %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
