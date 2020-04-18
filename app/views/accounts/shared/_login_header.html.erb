@@ -8,7 +8,7 @@
   <li class="nav-list-item dropdown">
     <%= link_to "マイページ", mypage_account_path(current_account) %>
     <span data-toggle="dropdown">
-      <%= attachment_image_tag current_account, :profile_image, :fill, 27, 27, fallback: "potato.jpg", size: "27x27", class: "dropdown-toggle" %>
+      <%= attachment_image_tag current_account, :profile_image, :fill, 27, 27, fallback: "potato.jpg", size: "27x27", class: "dropdown-toggle img-rounded" %>
       <span class="caret"></span>
     </span>
     <ul class="dropdown-menu">
