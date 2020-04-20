@@ -8,16 +8,54 @@
 </div>
 
 <!-- エリア検索 -->
-<h3>エリアから探す</h3>
-<div class="top-card" style="width: 260px; height: 72px; border: 1px solid grey">
-  <div class="row">
-    <div class="col-md-4">
-      <%= image_tag 'potato_row.jpg', size: "70x70", alt: "東京", class: "card-img" %>
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h4 class="card-title">東京</h4>
+<div class="row">
+  <div class="col-md-8">
+    <h4>エリアから探す</h4>
+  </div>
+  <div class="col-md-8 d-flex flex-wrap">
+
+    <%= link_to root_path, remote: true do %>
+      <div class="card mb-3" style="max-width: 200px;">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <%= image_tag 'potato_row.jpg', size: "76x76", alt: "東京", class: "card-img" %>
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">東京</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="card mb-3" style="max-width: 200px;">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <%= image_tag 'potato_row.jpg', size: "76x76", alt: "東京", class: "card-img" %>
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">神奈川</h5>
+          </div>
+        </div>
       </div>
     </div>
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8">
+    <h4>料理ジャンルから探す</h4>
+  </div>
+
+  <div class="col-md-8 d-flex flex-wrap">
+    <%= link_to "焼肉", search_genre_path(genre_name: "焼肉") %>
+    <%= link_to "寿司", search_genre_path(genre_name: "寿司") %>
+    <%= link_to "居酒屋", search_genre_path(genre_name: "居酒屋") %>
+    <%= link_to "イタリアン", search_genre_path(genre_name: "イタリアン") %>
+    <%= link_to "ラーメン", search_genre_path(genre_name: "ラーメン") %>
+    <%= link_to "カフェ", search_genre_path(genre_name: "カフェ") %>
   </div>
 </div>
