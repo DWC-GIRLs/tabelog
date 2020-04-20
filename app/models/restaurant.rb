@@ -12,4 +12,9 @@ class Restaurant < ApplicationRecord
     Restaurant.where(['address LIKE ?', "%#{area}%"])
     #文字列のどの部分にでも検索したい文字列が含まれていればOK
   end
+
+  def self.search_genre(genre)
+    return Restaurant.all unless genre
+    Restaurant.where(['genre_name LIKE ?', "%#{genre}%"])
+  end
 end
