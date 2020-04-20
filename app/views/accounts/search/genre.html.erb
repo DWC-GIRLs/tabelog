@@ -2,18 +2,49 @@
 
 <div class="row">
   <div class="col-xs-6 col-md-3">
-    <h4>エリアから探す</h4><br>
-    <h4>ジャンルから探す</h4>
+    <div class="card">
+      <div class="card-header">
+        <span class="font-weight-bold">エリア</span>から探す
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">全国</h5>
+      </div>
+      <div class="card-footer text-muted">
+        このエリアを地図で見る
+      </div>
+    </div>
+
+    <div class="card mt-2">
+      <div class="card-header">
+        <span class="font-weight-bold">ジャンル</span>から探す
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">すベて</h5>
+      </div>
+      <div class="card-footer">
+      </div>
+    </div>
   </div>
 
   <div class="col-xs-12 col-md-9">
     <h3>検索結果<%= @restaurants.count %>件</h3>
-    <ul><% @restaurants.each do |restaurant| %>
-        <%= image_tag restaurant.logo_image_id %>
-      <li>
-        <h4><%= restaurant.name %></h4>/<span><%= restaurant.genre_name %></span>
-      </li>
+    <ul>
+      <% @restaurants.each do |restaurant| %>
+        <%= link_to restaurant_path(restaurant) do %>
+          <div class="card mt-3">
+            <h5 class="card-header font-weight-bold">
+              <%= restaurant.name %>
+              <small class="text-dark font-weight-bold">/ <%= restaurant.genre_name %></small>
+            </h5>
+            <div class="card-body text-black-50">
+              <%= image_tag restaurant.logo_image_id, size: "150x150" %>
+              <%= restaurant.catch %>
+            </div>
+          </div>
+        <% end %>
       <% end %>
     </ul>
   </div>
+
+
 </div>
