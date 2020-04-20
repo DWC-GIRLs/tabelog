@@ -12,36 +12,44 @@
   <div class="col-md-8">
     <h4>エリアから探す</h4>
   </div>
+  <!-- メインエリア -->
   <div class="col-md-8 d-flex flex-wrap">
-
-    <%= link_to root_path, remote: true do %>
-      <div class="card mb-3" style="max-width: 200px;">
-        <div class="row no-gutters">
-          <div class="col-md-4">
-            <%= image_tag 'potato_row.jpg', size: "76x76", alt: "東京", class: "card-img" %>
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">東京</h5>
+    <% @areas.each do |area| %>
+      <%= link_to root_path, remote: true do %>
+        <div class="card mb-3" style="max-width: 200px;">
+          <div class="row no-gutters">
+            <div class="col-md-4">
+              <!-- "#{area}.jpg"みたいにすれば画像もeachで回せるかな -->
+              <%= image_tag "potato_row.jpg", size: "76x76", alt: area, class: "card-img" %>
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title"><%= area %></h5>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
 
-    <div class="card mb-3" style="max-width: 200px;">
-      <div class="row no-gutters">
-        <div class="col-md-4">
-          <%= image_tag 'potato_row.jpg', size: "76x76", alt: "東京", class: "card-img" %>
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">神奈川</h5>
-          </div>
-        </div>
-      </div>
+    <div class="col-md-6">
+      <div class="sub-area">北海道・東北</div>
+      <ul class="d-flex" style="padding: 0">
+        <li class="area" style="list-style: none"><%= link_to "北海道" %></li>
+        <li class="area" style="list-style: none"><%= link_to "北海道" %></li>
+        <li class="area" style="list-style: none"><%= link_to "北海道" %></li>
+        <li class="area" style="list-style: none"><%= link_to "北海道" %></li>
+      </ul>
+
+      <p>中部</p>
+      <p>中国・四国</p>
     </div>
 
+    <div class="col-md-6">
+      <p>関東</p>
+      <p>関西</p>
+      <p>九州・沖縄</p>
+    </div>
   </div>
 </div>
 
@@ -49,13 +57,18 @@
   <div class="col-md-8">
     <h4>料理ジャンルから探す</h4>
   </div>
-
+  <!-- メインジャンル -->
   <div class="col-md-8 d-flex flex-wrap">
-    <%= link_to "焼肉", search_genre_path(genre_name: "焼肉") %>
-    <%= link_to "寿司", search_genre_path(genre_name: "寿司") %>
-    <%= link_to "居酒屋", search_genre_path(genre_name: "居酒屋") %>
-    <%= link_to "イタリアン", search_genre_path(genre_name: "イタリアン") %>
-    <%= link_to "ラーメン", search_genre_path(genre_name: "ラーメン") %>
-    <%= link_to "カフェ", search_genre_path(genre_name: "カフェ") %>
+    <% @genres.each do |genre| %>
+      <%= link_to genre, search_genre_path(genre_name: genre) %>
+    <% end %>
+  </div>
+  <!-- タグジャンル -->
+  <div class="col-md-8 d-flex flex-wrap">
+    <% @tags.each do |tag| %>
+      <%= link_to search_genre_path(genre_name: tag) do %><!-- パラメータとしてrestを送る -->
+      <button type="button" class="btn btn-outline-secondary"><%= tag %></button>
+      <% end %>
+    <% end %>
   </div>
 </div>
