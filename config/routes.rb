@@ -36,9 +36,8 @@ Rails.application.routes.draw do
     get 'search/genre'
     get 'search/booking'
     get 'search/detail'
-
-    get 'restaurants/show'
-    get 'restaurants/index'
+    # restaurants
+    resources :restaurants, only: [:index, :show]
 
     get 'booking_histories/index'
     get 'booking_histories/new'
