@@ -5,3 +5,8 @@
   <%= current_account.email %>
 <% end %>
 <%= link_to "ログアウト", destroy_account_session_path, method: :delete %>
+
+<%= form_with url: search_keyword_path, method: :get, local: true do |f| %>
+  <%= f.text_field :q %>
+  <%= f.submit %>
+<% end %>

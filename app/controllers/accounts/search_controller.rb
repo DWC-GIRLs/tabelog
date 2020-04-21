@@ -3,6 +3,8 @@ class Accounts::SearchController < ApplicationController
   end
 
   def keyword
+    @restaurants = Restaurant.search_by_keyword(params[:q])
+    render template: "accounts/restaurants/index"
   end
 
   def genre
