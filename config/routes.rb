@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     get 'help/beginner/' => 'homes#about', as: :about
     # accounts
     resources :accounts, only: [:edit, :update, :destroy] do
-      get 'prof' => 'accounts#mypage', as: :mypage, on: :member
+      get '' => 'accounts#mypage', as: :mypage, on: :member
       collection do
         get 'member_entry_finish' => 'accounts#welcome', as: :welcom
         get 'logout' => 'accounts#logout', as: :logout
@@ -36,9 +36,8 @@ Rails.application.routes.draw do
     get 'search/genre'
     get 'search/booking'
     get 'search/detail'
-
-    get 'restaurants/show'
-    get 'restaurants/index'
+    # restaurants
+    resources :restaurants, only: [:index, :show]
 
     get 'booking_histories/index'
     get 'booking_histories/new'

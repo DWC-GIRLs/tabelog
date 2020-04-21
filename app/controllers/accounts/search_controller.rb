@@ -1,5 +1,7 @@
 class Accounts::SearchController < ApplicationController
+
   def area
+    @restaurants = Restaurant.search_area(params[:search])
   end
 
   def keyword
@@ -8,6 +10,7 @@ class Accounts::SearchController < ApplicationController
   end
 
   def genre
+    @restaurants = Restaurant.search_genre(params[:genre_name])
   end
 
   def booking
