@@ -6,4 +6,15 @@ class Restaurant < ApplicationRecord
 
   attachment :logo_image
   accepts_attachments_for :restaurant_images, attachment: :image
+
+  def self.search_area(area)
+    return Restaurant.all unless area
+    Restaurant.where(['address LIKE ?', "%#{area}%"])
+    #文字列のどの部分にでも検索したい文字列が含まれていればOK
+  end
+
+  def self.search_genre(genre)
+    return Restaurant.all unless genre
+    Restaurant.where(['genre_name LIKE ?', "%#{genre}%"])
+  end
 end
