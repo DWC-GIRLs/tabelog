@@ -58,8 +58,9 @@
     <h4>料理ジャンルから探す</h4>
   </div>
   <!-- メインジャンル -->
-  <div class="col-md-8 d-flex flex-wrap">
+  <div class="col-md-8 d-flex flex-wrap main-genre">
     <% @genres.each do |genre| %>
+      <%= image_tag "焼肉.jpg", size: '143x143' %>
       <%= link_to genre, search_genre_path(genre_name: genre) %>
     <% end %>
   </div>
