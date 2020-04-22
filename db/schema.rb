@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_14_131653) do
+
+ActiveRecord::Schema.define(version: 2020_04_16_070501) do
+
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -32,7 +34,6 @@ ActiveRecord::Schema.define(version: 2020_04_14_131653) do
     t.string "profile_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "profile_image"
     t.string "provider"
     t.string "uid"
     t.index ["email"], name: "index_accounts_on_email", unique: true
@@ -153,8 +154,9 @@ ActiveRecord::Schema.define(version: 2020_04_14_131653) do
     t.string "coupon_urls"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
-    t.index ["id", "user_id"], name: "index_restaurants_on_id_and_user_id"
+    t.integer "owner_id"
+    t.index ["id", "owner_id"], name: "index_restaurants_on_id_and_owner_id"
+    t.index ["id"], name: "index_restaurants_on_id_and_user_id"
   end
 
   create_table "review_images", force: :cascade do |t|

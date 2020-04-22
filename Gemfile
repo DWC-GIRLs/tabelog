@@ -41,6 +41,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'hirb'
   gem 'hirb-unicode'
+  gem 'pry-byebug'
 end
 
 group :development do
@@ -79,6 +80,7 @@ gem 'pry-byebug'
 # image upload
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
+
 # デザイン
-gem 'bootstrap-sass', '~> 3.3.6'
+gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'

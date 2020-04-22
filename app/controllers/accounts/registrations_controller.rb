@@ -5,14 +5,21 @@ class Accounts::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    @account = Account.new(session["devise.facebook_data"])
+  end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    @account = Account.new(account_params)
+    @account.password = Devise.friendly_token[0,20] #ランダムにパスワード作成
+    if @account.save
+      flash[:notice] = "Wellcome to tabelog!!!!!"
+      redirect_to root_path
+    else
+      render 'new'
+    end
+  end
 
   # GET /resource/edit
   # def edit
@@ -59,4 +66,10 @@ class Accounts::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+  private
+
+  def account_params
+    params.require(:account).permit(:email, :nick_name, :profile_image, :provider, :uid)
+  end
+
 end

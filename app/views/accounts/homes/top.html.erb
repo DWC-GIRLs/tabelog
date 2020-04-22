@@ -1,7 +1,75 @@
-<h1>Accounts::Homes#top</h1>
-<p>Find me in app/views/accounts/homes/top.html.erb</p>
-<% if account_signed_in? %>
-  <%= current_account.nick_name %>
-  <%= current_account.email %>
-<% end %>
-<%= link_to "ログアウト", destroy_account_session_path, method: :delete %>
+<!-- 検索窓 -->
+<div class="row">
+    <h4>日時、人数から探す</h4>
+    <%= form_tag :search_area, :method => 'get' do %>
+      <%= text_field_tag :search, '', name: "search", placeholder: "エリア・駅 [例:銀座、渋谷]" %>
+      <%= submit_tag '検索', class: "btn-orange" %>
+    <% end %>
+</div>
+
+<!-- エリア検索 -->
+<div class="row">
+  <div class="col-md-8">
+    <h4>エリアから探す</h4>
+  </div>
+  <!-- メインエリア -->
+  <div class="col-md-8 d-flex flex-wrap">
+    <% @areas.each do |area| %>
+      <%= link_to root_path, remote: true do %>
+        <div class="card mb-3" style="max-width: 200px;">
+          <div class="row no-gutters">
+            <div class="col-md-4">
+              <!-- "#{area}.jpg"みたいにすれば画像もeachで回せるかな -->
+              <%= image_tag "potato_row.jpg", size: "76x76", alt: area, class: "card-img" %>
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title"><%= area %></h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+
+    <div class="col-md-6">
+      <div class="sub-area">北海道・東北</div>
+      <ul class="d-flex" style="padding: 0">
+        <li class="area" style="list-style: none"><%= link_to "北海道" %></li>
+        <li class="area" style="list-style: none"><%= link_to "北海道" %></li>
+        <li class="area" style="list-style: none"><%= link_to "北海道" %></li>
+        <li class="area" style="list-style: none"><%= link_to "北海道" %></li>
+      </ul>
+
+      <p>中部</p>
+      <p>中国・四国</p>
+    </div>
+
+    <div class="col-md-6">
+      <p>関東</p>
+      <p>関西</p>
+      <p>九州・沖縄</p>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8">
+    <h4>料理ジャンルから探す</h4>
+  </div>
+  <!-- メインジャンル -->
+  <div class="col-md-8 d-flex flex-wrap main-genre">
+    <% @genres.each do |genre| %>
+      <%= image_tag "焼肉.jpg", size: '143x143' %>
+      <%= link_to genre, search_genre_path(genre_name: genre) %>
+    <% end %>
+  </div>
+  <!-- タグジャンル -->
+  <div class="col-md-8 d-flex flex-wrap">
+    <% @tags.each do |tag| %>
+      <%= link_to search_genre_path(genre_name: tag) do %><!-- パラメータとしてrestを送る -->
+      <button type="button" class="btn btn-outline-secondary"><%= tag %></button>
+      <% end %>
+    <% end %>
+  </div>
+</div>
