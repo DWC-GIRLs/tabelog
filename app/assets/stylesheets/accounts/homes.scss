@@ -6,9 +6,15 @@
   position: relative;
 }
 
-.main-genre a {
+.main-genre .ganre_name {
   position: absolute;
+  font-weight: bold;
   color: white;
-  top: 30px;
-  left: 0;
+  top: 80px;
+  left: 40px;
+}
+
+.genre_mainimg {
+  filter:brightness(70%);
+  display: block;
 }

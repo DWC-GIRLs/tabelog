@@ -7,69 +7,95 @@
     <% end %>
 </div>
 
-<!-- エリア検索 -->
-<div class="row">
-  <div class="col-md-8">
-    <h4>エリアから探す</h4>
-  </div>
-  <!-- メインエリア -->
-  <div class="col-md-8 d-flex flex-wrap">
-    <% @areas.each do |area| %>
-      <%= link_to root_path, remote: true do %>
-        <div class="card mb-3" style="max-width: 200px;">
-          <div class="row no-gutters">
-            <div class="col-md-4">
-              <!-- "#{area}.jpg"みたいにすれば画像もeachで回せるかな -->
-              <%= image_tag "potato_row.jpg", size: "76x76", alt: area, class: "card-img" %>
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <h5 class="card-title"><%= area %></h5>
+<div id="carousel" class="row mt-5 carousel slide" data-interval="false">
+  <div class="carousel-inner">
+    <!----------- メインエリア ------------->
+    <div class="carousel-item active">
+      <div class="col-md-8 mb-3">
+        <h4 class="font-weight-bold">エリアから探す</h4>
+      </div>
+      <div class="col-md-8 d-flex flex-wrap">
+        <% @main_areas.each do |area| %>
+          <%= link_to "#carousel", data: { slide: "next" } do %>
+            <div class="card mb-3 mr-4" style="max-width: 260px">
+              <div class="row no-gutters">
+                <div class="col-md-4">
+                  <!-- "#{area}.jpg"みたいにすれば画像もeachで回せるかな -->
+                  <%= image_tag "potato_row.jpg", size: "76x76", alt: area, class: "card-img" %>
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title"><%= area %></h5>
+                  </div>
+                </div>
               </div>
             </div>
+          <% end %>
+        <% end %>
+        <div class="col-md-6">
+          <div class="sub-area">北海道・東北</div>
+          <ul class="d-flex" style="padding: 0">
+            <li class="area mr-3" style="list-style: none"><%= link_to "北海道" %></li>
+            <li class="area mr-3" style="list-style: none"><%= link_to "北海道" %></li>
+            <li class="area mr-3" style="list-style: none"><%= link_to "北海道" %></li>
+            <li class="area" style="list-style: none"><%= link_to "北海道" %></li>
+          </ul>
+          <p>中部</p>
+          <p>中国・四国</p>
+        </div>
+        <div class="col-md-6">
+          <p>関東</p>
+          <p>関西</p>
+          <p>九州・沖縄</p>
+        </div>
+      </div>
+    </div>
+    <!----------- メインエリア ------------->
+
+    <!----------- サブエリア --------------->
+    <div class="carousel-item">
+      <div class="col-md-8 mb-3">
+        <%= link_to "#carousel", data: { slide: "prev" } do %>
+          <h5 class="font-weight-bold">都道府県一覧に戻る</h5>
+        <% end %>
+      </div>
+      <div class="col-md-8">
+        <div class="card" style="min-height: 347px">
+          <!-- ここをリンクごとに変更 -->
+          <div class="card-body">
+            <h5 class="card-title">カードのタイトル</h5>
+            <p class="card-text">以下のテキストを追加のコンテンツへの自然な導入としてサポート。</p>
           </div>
         </div>
-      <% end %>
-    <% end %>
-
-    <div class="col-md-6">
-      <div class="sub-area">北海道・東北</div>
-      <ul class="d-flex" style="padding: 0">
-        <li class="area" style="list-style: none"><%= link_to "北海道" %></li>
-        <li class="area" style="list-style: none"><%= link_to "北海道" %></li>
-        <li class="area" style="list-style: none"><%= link_to "北海道" %></li>
-        <li class="area" style="list-style: none"><%= link_to "北海道" %></li>
-      </ul>
-
-      <p>中部</p>
-      <p>中国・四国</p>
+      </div>
     </div>
-
-    <div class="col-md-6">
-      <p>関東</p>
-      <p>関西</p>
-      <p>九州・沖縄</p>
-    </div>
+    <!----------- サブエリア --------------->
   </div>
 </div>
 
-<div class="row">
-  <div class="col-md-8">
-    <h4>料理ジャンルから探す</h4>
+<!-- ジャンル検索 -->
+<div class="row mt-5">
+  <div class="col-md-8 mb-3">
+    <h4 class="font-weight-bold">料理ジャンルから探す</h4>
   </div>
   <!-- メインジャンル -->
-  <div class="col-md-8 d-flex flex-wrap main-genre">
+  <div class="col-md-8 d-flex flex-wrap">
     <% @genres.each do |genre| %>
-      <%= image_tag "焼肉.jpg", size: '143x143' %>
-      <%= link_to genre, search_genre_path(genre_name: genre) %>
+      <span class="main-genre">
+        <%= link_to search_genre_path(genre_name: genre) do %>
+          <%= image_tag "焼肉.jpg", size: '135x135', class: "mr-2 genre_mainimg" %>
+          <span class="ganre_name"><%= genre %></span>
+        <% end %>
+      </span>
     <% end %>
   </div>
   <!-- タグジャンル -->
-  <div class="col-md-8 d-flex flex-wrap">
+  <div class="col-md-8 d-flex flex-wrap mt-4">
     <% @tags.each do |tag| %>
       <%= link_to search_genre_path(genre_name: tag) do %><!-- パラメータとしてrestを送る -->
-      <button type="button" class="btn btn-outline-secondary"><%= tag %></button>
+        <button type="button" class="btn btn-outline-secondary mr-3"><%= tag %></button>
       <% end %>
     <% end %>
   </div>
 </div>
+<!-- ジャンル検索 -->
