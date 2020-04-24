@@ -38,7 +38,10 @@ main {
   .px-#{$i} {padding: 0 #{$i * 10}px;}
   .py-#{$i} {padding: #{$i * 10i}px 0;}
 }
-
+// フォントサイズ
+.small {
+  font-size: small;
+}
 // ヘッダー
 header {
   padding-top: 10px;

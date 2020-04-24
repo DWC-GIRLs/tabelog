@@ -15,8 +15,8 @@
         <h4 class="font-weight-bold">エリアから探す</h4>
       </div>
       <div class="col-md-8 d-flex flex-wrap">
-        <% @main_areas.each do |area| %>
-          <%= link_to "#carousel", data: { slide: "next" } do %>
+        <% @areas.each do |area| %>
+          <%= link_to "#carousel", area_name: area, data: { slide: "next" } do %>
             <div class="card mb-3 mr-4" style="max-width: 260px">
               <div class="row no-gutters">
                 <div class="col-md-4">
@@ -32,27 +32,51 @@
             </div>
           <% end %>
         <% end %>
-        <div class="col-md-6">
+        <div class="col-md-7 p-0">
           <div class="sub-area">北海道・東北</div>
-          <ul class="d-flex" style="padding: 0">
-            <li class="area mr-3" style="list-style: none"><%= link_to "北海道" %></li>
-            <li class="area mr-3" style="list-style: none"><%= link_to "北海道" %></li>
-            <li class="area mr-3" style="list-style: none"><%= link_to "北海道" %></li>
-            <li class="area" style="list-style: none"><%= link_to "北海道" %></li>
+          <ul class="d-flex p-0">
+            <% @hokkaido.each do |h| %>
+              <li class="area mr-3 list-inline-item small"><%= link_to "#{h}", "#carousel", data: { slide: "next" } %></li>
+            <% end %>
           </ul>
-          <p>中部</p>
-          <p>中国・四国</p>
+          <div class="sub-area">中部</div>
+          <ul class="d-flex p-0">
+            <% @tyubu.each do |h| %>
+              <li class="area mr-3 list-inline-item small"><%= link_to "#{h}", "#carousel", data: { slide: "next" } %></li>
+            <% end %>
+          </ul>
+          <div class="sub-area">中国・四国</div>
+          <ul class="d-flex p-0">
+            <% @tyugoku.each do |h| %>
+              <li class="area mr-3 list-inline-item small"><%= link_to "#{h}", "#carousel", data: { slide: "next" } %></li>
+            <% end %>
+          </ul>
         </div>
-        <div class="col-md-6">
-          <p>関東</p>
-          <p>関西</p>
-          <p>九州・沖縄</p>
+        <div class="col-md-5 p-0">
+          <div class="sub-area">関東</div>
+          <ul class="d-flex p-0">
+            <% @kanto.each do |h| %>
+              <li class="area mr-3 list-inline-item small"><%= link_to "#{h}", "#carousel", data: { slide: "next" } %></li>
+            <% end %>
+          </ul>
+          <div class="sub-area">関西</div>
+          <ul class="d-flex p-0">
+            <% @kansai.each do |h| %>
+              <li class="area mr-3 list-inline-item small"><%= link_to "#{h}", "#carousel", data: { slide: "next" } %></li>
+            <% end %>
+          </ul>
+          <div class="sub-area">九州・沖縄</div>
+          <ul class="d-flex p-0">
+            <% @okinawa.each do |h| %>
+              <li class="area mr-3 list-inline-item small"><%= link_to "#{h}", "#carousel", data: { slide: "next" } %></li>
+            <% end %>
+          </ul>
         </div>
       </div>
     </div>
     <!----------- メインエリア ------------->
 
-    <!----------- サブエリア --------------->
+    <!--- サブエリア(メインエリア押すと発火) --->
     <div class="carousel-item">
       <div class="col-md-8 mb-3">
         <%= link_to "#carousel", data: { slide: "prev" } do %>
@@ -60,11 +84,13 @@
         <% end %>
       </div>
       <div class="col-md-8">
-        <div class="card" style="min-height: 347px">
+        <div class="card" style="min-height: 369px">
           <!-- ここをリンクごとに変更 -->
           <div class="card-body">
             <h5 class="card-title">カードのタイトル</h5>
-            <p class="card-text">以下のテキストを追加のコンテンツへの自然な導入としてサポート。</p>
+            <% if params[:area_name] == "東京" %>
+              <p class="card-text">以下のテキストを追加のコンテンツへの自然な導入としてサポート。</p>
+            <% end %>
           </div>
         </div>
       </div>
