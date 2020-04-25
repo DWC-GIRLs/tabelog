@@ -16,7 +16,7 @@
       </div>
       <div class="col-md-8 d-flex flex-wrap">
         <% @areas.each do |area| %>
-          <%= link_to "#carousel", area_name: area, data: { slide: "next" } do %>
+          <%= link_to "#carousel", data: { slide: "next" } do %>
             <div class="card mb-3 mr-4" style="max-width: 260px">
               <div class="row no-gutters">
                 <div class="col-md-4">
@@ -76,7 +76,7 @@
     </div>
     <!----------- メインエリア ------------->
 
-    <!--- サブエリア(メインエリア押すと発火) --->
+    <!--- サブエリア1(メインエリア押すと発火) --->
     <div class="carousel-item">
       <div class="col-md-8 mb-3">
         <%= link_to "#carousel", data: { slide: "prev" } do %>
@@ -88,9 +88,24 @@
           <!-- ここをリンクごとに変更 -->
           <div class="card-body">
             <h5 class="card-title">カードのタイトル</h5>
-            <% if params[:area_name] == "東京" %>
               <p class="card-text">以下のテキストを追加のコンテンツへの自然な導入としてサポート。</p>
-            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--- サブエリア2(メインエリア押すと発火) --->
+    <div class="carousel-item">
+      <div class="col-md-8 mb-3">
+        <%= link_to "#carousel", data: { slide: "prev" } do %>
+          <h5 class="font-weight-bold">都道府県一覧に戻る</h5>
+        <% end %>
+      </div>
+      <div class="col-md-8">
+        <div class="card" style="min-height: 369px">
+          <!-- ここをリンクごとに変更 -->
+          <div class="card-body">
+            <h5 class="card-title">神奈川</h5>
+              <p class="card-text">以下のテキストを追加のコンテンツへの自然な導入としてサポート。</p>
           </div>
         </div>
       </div>

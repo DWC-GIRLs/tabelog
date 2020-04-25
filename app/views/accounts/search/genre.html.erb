@@ -7,7 +7,7 @@
         <span class="font-weight-bold">エリア</span>から探す
       </div>
       <div class="card-body">
-        <h5 class="card-title">全国</h5>
+        <%= link_to "全国", class: "card-title", data: { toggle: "popover" }, title: "ポップオーバーのタイトル", data: { content: "ポップオーバーの内容"}, data: { trigger: "hover"} %>
       </div>
       <div class="card-footer text-muted">
         このエリアを地図で見る
