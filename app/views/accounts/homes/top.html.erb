@@ -1,11 +1,8 @@
 <!-- 検索窓 -->
 <div class="row">
-    <h4>日時、人数から探す</h4>
-    <%= form_with url: search_keyword_path, method: :get, local: true do |f| %>
-      <%= f.text_field :search_area,  placeholder: "エリア・駅 [例:銀座、渋谷]" %>
-      <%= f.text_field :keyword, placeholder: "キーワード[例:焼肉、店名、個室]"%>
-      <%= f.submit '検索', class: "btn-orange" %>
-    <% end %>
+  <div class="col-md-8">
+    <%= render '/accounts/shared/search_form' %>
+  </div>
 </div>
 
 <!-- エリア検索 -->
