@@ -1,7 +1,8 @@
 <h1>Accounts::Restaurants#index</h1>
 <p>Find me in app/views/accounts/restaurants/index.html.erb</p>
 
+<ul>
 <% @restaurants.each do |restaurant| %>
-  <%= restaurant.name %>
-  <%= image_tag restaurant.logo_image_id %>
+  <ol><%= restaurant.name %></ol>
 <% end %>
+</ul>
