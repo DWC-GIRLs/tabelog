@@ -1,5 +1,3 @@
-<div class="row">
-  <div class="col-md-8 restaurant-info">
     <h4>Owners::Restaurants#show</h4>
 
     <h1><%= @restaurant.name %></h1><br>
@@ -73,20 +71,3 @@
     <p>
       midnight <%= @restaurant.midnight %>
     </p>
-  </div>
-
-  <div class="col-md-4 reservation">
-    <%= form_tag(booking_histories_new_path, method: :get, remote: true) do %>
-    <%= label_tag :日付 %>
-    <%= date_field_tag :date %><br>
-    <%= label_tag :人数 %>
-    <%= select_tag :pople_count, options_for_select([*1..99], "2") %>名<br>
-    <%= label_tag :時間 %>
-    <%= select_tag :time, options_for_select(@results) %><br>
-    <%= submit_tag "予約する", class: "btn btn-lg btn-orange" %>
-    <% end %>
-    <div id="reservation-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-    </div>
-  </div>
-
-</div>
