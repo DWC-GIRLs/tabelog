@@ -16,7 +16,8 @@
       </div>
       <div class="col-md-8 d-flex flex-wrap">
         <% @areas.each do |area| %>
-          <%= link_to "#carousel", data: { slide: "next" } do %>
+        <!-- link_toにしたいなあ -->
+          <a href="carousel" data-target="#carousel" data-slide-to="1" >
             <div class="card mb-3 mr-4" style="max-width: 260px">
               <div class="row no-gutters">
                 <div class="col-md-4">
@@ -30,7 +31,8 @@
                 </div>
               </div>
             </div>
-          <% end %>
+          </a>
+          <!-- link_toにしたいなあ -->
         <% end %>
         <div class="col-md-7 p-0">
           <div class="sub-area">北海道・東北</div>
@@ -79,16 +81,30 @@
     <!--- サブエリア1(メインエリア押すと発火) --->
     <div class="carousel-item">
       <div class="col-md-8 mb-3">
-        <%= link_to "#carousel", data: { slide: "prev" } do %>
+        <a href="carousel" data-target="#carousel" data-slide-to="0">
           <h5 class="font-weight-bold">都道府県一覧に戻る</h5>
-        <% end %>
+        </a>
       </div>
       <div class="col-md-8">
         <div class="card" style="min-height: 369px">
           <!-- ここをリンクごとに変更 -->
           <div class="card-body">
-            <h5 class="card-title">カードのタイトル</h5>
-              <p class="card-text">以下のテキストを追加のコンテンツへの自然な導入としてサポート。</p>
+            <h5 class="card-title font-weight-bold">東京</h5>
+              <p class="card-text">
+                <%= link_to "銀座", "#", class: "btn page-link text-dark d-inline-block mr-2" %>
+                <%= link_to "新橋・汐留", "#", class: "btn page-link text-dark d-inline-block mr-2" %>
+                <%= link_to "渋谷", "#", class: "btn page-link text-dark d-inline-block mr-2" %>
+                <%= link_to "新宿", "#", class: "btn page-link text-dark d-inline-block mr-2" %>
+                <%= link_to "池袋", "#", class: "btn page-link text-dark d-inline-block" %>
+              </p>
+              <ul class="card-text">
+                <li><%= link_to "銀座・新橋・有楽町", "#" %></li>
+                <li><%= link_to "銀座・新橋・有楽町", "#" %></li>
+                <li><%= link_to "銀座・新橋・有楽町", "#" %></li>
+                <li><%= link_to "銀座・新橋・有楽町", "#" %></li>
+                <li><%= link_to "銀座・新橋・有楽町", "#" %></li>
+                <li><%= link_to "銀座・新橋・有楽町", "#" %></li>
+              </ul>
           </div>
         </div>
       </div>
@@ -96,9 +112,9 @@
     <!--- サブエリア2(メインエリア押すと発火) --->
     <div class="carousel-item">
       <div class="col-md-8 mb-3">
-        <%= link_to "#carousel", data: { slide: "prev" } do %>
+        <a href="carousel" data-target="#carousel" data-slide-to="0">
           <h5 class="font-weight-bold">都道府県一覧に戻る</h5>
-        <% end %>
+        </a>
       </div>
       <div class="col-md-8">
         <div class="card" style="min-height: 369px">
