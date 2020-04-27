@@ -14,6 +14,14 @@
     <p>close => <%= @restaurant.close %></p>
     <p>party_capacity => <%= @restaurant.party_capacity %></p>
 
+    <p>ロゴ画像</p>
+    <%= attachment_image_tag @restaurant, :logo_image, :fill, 200, 200 %>
+
+    <p>店舗画像</p>
+    <%= @restaurant.restaurant_images.each do |image| %>
+      <%= attachment_image_tag image, :image, :fill, 100, 100 %>
+    <% end %>
+
 
 
     <p>
