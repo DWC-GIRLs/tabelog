@@ -1,2 +1,2 @@
-$("#reservation-modal").html("<%= escape_javascript(render 'form') %>")
+$("#reservation-modal").html("<%= escape_javascript(render 'form', booking_history: @booking_history) %>")
 $("#reservation-modal").modal("show")
