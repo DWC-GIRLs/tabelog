@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Accounts::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
+  before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
@@ -67,6 +67,10 @@ class Accounts::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
   private
+
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:nick_name, :profile_image])
+  end
 
   def account_params
     params.require(:account).permit(:email, :nick_name, :profile_image, :provider, :uid)
