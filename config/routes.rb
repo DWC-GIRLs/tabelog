@@ -41,7 +41,7 @@ Rails.application.routes.draw do
 
     get 'booking_histories/index'
     get 'booking_histories/new'
-    get 'booking_histories/create'
+    post 'booking_histories/create'
 
     get 'reviews/index'
     get 'reviews/new'
