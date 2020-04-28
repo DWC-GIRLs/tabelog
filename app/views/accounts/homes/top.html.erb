@@ -5,69 +5,111 @@
   </div>
 </div>
 
-<!-- エリア検索 -->
-<div class="row">
-  <div class="col-md-8">
-    <h4>エリアから探す</h4>
-  </div>
-  <!-- メインエリア -->
-  <div class="col-md-8 d-flex flex-wrap">
-    <% @areas.each do |area| %>
-      <%= link_to root_path, remote: true do %>
-        <div class="card mb-3" style="max-width: 200px;">
-          <div class="row no-gutters">
-            <div class="col-md-4">
-              <!-- "#{area}.jpg"みたいにすれば画像もeachで回せるかな -->
-              <%= image_tag "potato_row.jpg", size: "76x76", alt: area, class: "card-img" %>
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <h5 class="card-title"><%= area %></h5>
+<div id="carousel" class="row mt-5 carousel slide carousel-fade" data-interval="false">
+  <div class="carousel-inner">
+    <!----------- メインエリア ------------->
+    <div class="carousel-item active">
+      <div class="col-md-8 mb-3">
+        <h4 class="font-weight-bold">エリアから探す</h4>
+      </div>
+      <div class="col-md-8 d-flex flex-wrap">
+        <% @areas.each.with_index(1) do |area, i| %>
+        <!-- link_toにしたいなあ -->
+          <a href="carousel" data-target="#carousel" data-slide-to=<%= i %>>
+            <div class="card mb-3 mr-4" style="max-width: 260px">
+              <div class="row no-gutters">
+                <div class="col-md-4">
+                  <!-- "#{area}.jpg"みたいにすれば画像もeachで回せるかな -->
+                  <%= image_tag "potato_row.jpg", size: "76x76", alt: area, class: "card-img" %>
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title"><%= area %></h5>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
+          </a>
+          <!-- link_toにしたいなあ -->
+        <% end %>
+        <div class="col-md-7 p-0">
+          <%= render "mainarea", main: "北海道", areas: @hokkaido %>
+          <%= render "mainarea", main: "中部", areas: @tyubu %>
+          <%= render "mainarea", main: "中国・四国", areas: @tyugoku %>
         </div>
-      <% end %>
-    <% end %>
-
-    <div class="col-md-6">
-      <div class="sub-area">北海道・東北</div>
-      <ul class="d-flex" style="padding: 0">
-        <li class="area" style="list-style: none"><%= link_to "北海道" %></li>
-        <li class="area" style="list-style: none"><%= link_to "北海道" %></li>
-        <li class="area" style="list-style: none"><%= link_to "北海道" %></li>
-        <li class="area" style="list-style: none"><%= link_to "北海道" %></li>
-      </ul>
-
-      <p>中部</p>
-      <p>中国・四国</p>
+        <div class="col-md-5 p-0">
+          <%= render "mainarea", main: "関東", areas: @kanto %>
+          <%= render "mainarea", main: "関西", areas: @kansai %>
+          <%= render "mainarea", main: "九州・沖縄", areas: @okinawa %>
+        </div>
+      </div>
     </div>
+    <!----------- メインエリア終 ------------->
 
-    <div class="col-md-6">
-      <p>関東</p>
-      <p>関西</p>
-      <p>九州・沖縄</p>
-    </div>
+    <!-- サブエリア(メインエリア押すと発火) -->
+    <!-- 東京(1) -->
+    <%= render "subarea",
+      l_area: "東京",
+      m_areas: ["銀座", "新橋・汐留", "渋谷", "新宿", "池袋"],
+      s_areas: ["銀座・新橋・有楽町", "東京・日本橋", "渋谷・恵比寿・代官山", "新宿・代々木・大久保", "池袋〜高田馬場・早稲田", "原宿・表参道・青山", "六本木・麻布・広尾", "赤坂・永田町・溜池", "四ツ谷・市ヶ谷・飯田橋", "秋葉原・神田・水道橋", "上野・浅草・日暮里", "両国・錦糸町・小岩", "築地・湾岸・お台場", "浜松町・田町・品川", "大井・蒲田", "目黒・白金・五反田", "東急沿線", "京王・小田急沿線", "中野〜西荻窪", "吉祥寺・三鷹・武蔵野境", "西武沿線", "板橋・東武沿線", "大塚・巣鴨・駒込・赤羽", "千住・綾瀬・葛飾", "小金井・国分寺・国立", "調布・府中・狛江", "町田・稲城・多摩", "西東京市周辺", "立川市・八王子市周辺", "福生・青梅周辺", "伊豆諸島・小笠原"]
+    %>
+    <!-- 神奈川(2) -->
+    <%= render "subarea",
+      l_area: "神奈川",
+      m_areas: ["横浜駅周辺", "関内・伊勢佐木町", "藤沢・辻堂", "川崎駅周辺", "中原区（武蔵野小杉周辺）"],
+      s_areas: ["横浜市", "鎌倉・湘南", "川崎市", "横須賀・逗子・葉山・三浦", "相模原・大和周辺", "海老名・厚木周辺", "小田原周辺", "箱根・湯河原"]
+    %>
+    <!-- 愛知(3) -->
+    <%= render "subarea",
+      l_area: "愛知",
+      m_areas: ["名古屋駅周辺", "栄・矢場町", "大須・金山・鶴舞", "岡崎市", "豊橋市"],
+      s_areas: ["名古屋市", "一宮・稲沢・愛西", "犬山・瀬戸・愛知郡", "大府・常滑・知多", "豊田・岡崎・西尾", "田原・豊橋・新城"]
+    %>
+    <!-- 大阪(4) -->
+    <%= render "subarea",
+      l_area: "大阪",
+      m_areas: ["大阪駅・梅田・新地", "南森町・天満・天神", "心斎橋・南船場・長堀橋", "難波・日本橋・道頓堀", "天王寺・阿倍野"],
+      s_areas: ["大阪市", "境・泉南", "豊中・池田・高槻", "北河内・東大阪", "南河内"]
+    %>
+    <!-- 京都(5) -->
+    <%= render "subarea",
+      l_area: "京都",
+      m_areas: ["京都駅周辺", "河原町・木屋町・先斗町", "御所周辺", "壬生・二条城周辺", "祇園・清水寺・東山"],
+      s_areas: ["京都市", "宇治・南山城", "亀山・丹羽・福知山", "天橋立・丹後半島"]
+    %>
+    <!-- 福岡(6) -->
+    <%= render "subarea",
+      l_area: "福岡",
+      m_areas: ["博多駅周辺", "中洲周辺", "天神周辺", "赤坂・薬院・平尾周辺", "北九州市小倉北区", "久留米"],
+      s_areas: ["福岡市", "太宰府・宗像・糟屋郡", "北九州市", "北九州市周辺", "筑豊", "久留米・筑後", "糸島"]
+    %>
+    <!----------- サブエリア終 --------------->
   </div>
 </div>
 
-<div class="row">
-  <div class="col-md-8">
-    <h4>料理ジャンルから探す</h4>
+<!-- ジャンル検索 -->
+<div class="row mt-5">
+  <div class="col-md-8 mb-3">
+    <h4 class="font-weight-bold">料理ジャンルから探す</h4>
   </div>
   <!-- メインジャンル -->
-  <div class="col-md-8 d-flex flex-wrap main-genre">
+  <div class="col-md-8 d-flex flex-wrap">
     <% @genres.each do |genre| %>
-      <%= image_tag "焼肉.jpg", size: '143x143' %>
-      <%= link_to genre, search_genre_path(genre_name: genre) %>
+      <span class="main-genre">
+        <%= link_to search_genre_path(genre_name: genre) do %>
+          <%= image_tag "焼肉.jpg", size: '135x135', class: "mr-2 genre_mainimg" %>
+          <span class="ganre_name"><%= genre %></span>
+        <% end %>
+      </span>
     <% end %>
   </div>
   <!-- タグジャンル -->
-  <div class="col-md-8 d-flex flex-wrap">
+  <div class="col-md-8 d-flex flex-wrap mt-4">
     <% @tags.each do |tag| %>
       <%= link_to search_genre_path(genre_name: tag) do %><!-- パラメータとしてrestを送る -->
-      <button type="button" class="btn btn-outline-secondary"><%= tag %></button>
+        <button type="button" class="btn btn-outline-secondary mr-3"><%= tag %></button>
       <% end %>
     <% end %>
   </div>
 </div>
+<!-- ジャンル検索 -->

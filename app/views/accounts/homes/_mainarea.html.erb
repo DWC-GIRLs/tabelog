@@ -1,0 +1,10 @@
+<div class="sub-area"><%= main %></div>
+<ul class="d-flex p-0">
+  <% areas.each.with_index(1) do |area, i| %>
+    <li class="area mr-3 list-inline-item small">
+      <a href="carousel" data-target="#carousel" data-slide-to=<%= i %>>
+        <%= area %>
+      </a>
+    </li>
+  <% end %>
+</ul>

@@ -1,0 +1,27 @@
+<div class="carousel-item">
+  <div class="col-md-8 mb-3">
+    <a href="carousel" data-target="#carousel" data-slide-to="0">
+      <h5 class="font-weight-bold">都道府県一覧に戻る</h5>
+    </a>
+  </div>
+  <div class="col-md-8">
+    <div class="card" style="min-height: 369px">
+      <!-- ここをリンクごとに変更 -->
+      <div class="card-body">
+        <h5 class="card-title font-weight-bold"><%= l_area %></h5>
+          <p class="card-text">
+            <% m_areas.each do |area| %>
+              <%= link_to area, "#", class: "btn page-link text-dark d-inline-block mr-2" %>
+            <% end %>
+          </p>
+          <ul class="card-text d-flex flex-wrap p-0">
+            <% s_areas.each do |area| %>
+              <li class="list-unstyled small" style="min-width: 175px; margin: 0 10px 10px 0">
+                <%= link_to area, "#" %>
+              </li>
+            <% end %>
+          </ul>
+      </div>
+    </div>
+  </div>
+</div>

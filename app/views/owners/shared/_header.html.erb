@@ -1,20 +1,28 @@
-<% if owner_signed_in? %>
-  <ul class="nav-list">
-    <li class="nav-list-item"><%= link_to "logout", destroy_owner_session_path, method: :delete %></li>
-    <li class="nav-list-item"><%= link_to "mypage", owners_mypage_path(current_owner) %></li>
-    <li class="nav-list-item"><%= link_to "new restaurant", new_owners_restaurant_path %></li>
-  </ul>
-  <% message_for_owner = "ｲﾓｫ…#{current_owner.first_name}ｻｧﾝ…ｵｲﾓｫ…" %>
-<% else %>
-  <ul class="nav-list">
-    <li class="nav-list-item"><%= link_to "login", new_owner_session_path %></li>
-    <li class="nav-list-item"><%= link_to 'signup', new_owner_registration_path %></li>
-  </ul>
-  <% message_for_owner = "ｲﾓｫ…ｵｲﾓｫ…ｵｲﾓﾀﾞﾖｫ…" %>
-<% end %>
-<div class="row" style="height:60px;">
-  <%= link_to new_owner_session_path do %>
-    <%= image_tag 'potato.png', style:"height:100%;", class: "brand-logo" %>
+<div class="row">
+  <%= @page_title %>
+  <% if owner_signed_in? %>
+    <ul class="nav-list">
+      <li class="nav-list-item"><%= link_to "logout", destroy_owner_session_path, method: :delete %></li>
+      <li class="nav-list-item"><%= link_to "mypage", owners_mypage_path(current_owner) %></li>
+      <li class="nav-list-item"><%= link_to "new restaurant", new_owners_restaurant_path %></li>
+    </ul>
+    <% message_for_owner = "ｲﾓｫ…#{current_owner.first_name}ｻｧﾝ…ｵｲﾓｫ…" %>
+  <% else %>
+    <ul class="nav-list">
+      <li class="nav-list-item"><%= link_to "login", new_owner_session_path %></li>
+      <li class="nav-list-item"><%= link_to 'signup', new_owner_registration_path %></li>
+    </ul>
+    <% message_for_owner = "ｲﾓｫ…ｵｲﾓｫ…ｵｲﾓﾀﾞﾖｫ…" %>
   <% end %>
-  <span class="align-top"><%= message_for_owner %></span>
-</div>
+  <div class="row" style="height:60px;">
+    <%= link_to new_owner_session_path do %>
+      <%= image_tag 'potato.png', style:"height:100%;", class: "brand-logo" %>
+    <% end %>
+    <div class="row" style="height:60px;">
+      <%= link_to new_owner_session_path do %>
+        <%= image_tag 'potato.png', style:"height:100%;" %>
+      <% end %>
+      <span class="align-top"><%= message_for_owner %></span>
+    </div>
+  </div>
+ </div>
