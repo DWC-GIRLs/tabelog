@@ -13,21 +13,17 @@
   <body>
     <header>
       <div class="container">
-        <div class="row">
-          <%= @page_title %>
-          <!-- owner -->
-          <% if request.fullpath.include? "owner" %>
-            <%= render 'owners/shared/header' %>
+        <!-- owner -->
+        <% if request.fullpath.include? "owner" %>
+          <%= render 'owners/shared/header' %>
+        <% else %>
+        <!-- account -->
+          <% if account_signed_in? %>
+            <%= render 'accounts/shared/login_header' %><!-- ユーザーサインイン時 -->
           <% else %>
-          <!-- account -->
-            <% if account_signed_in? %>
-              <%= render 'accounts/shared/login_header' %><!-- ユーザーサインイン時 -->
-            <% else %>
-              <%= render 'accounts/shared/logout_header' %><!-- ユーザーサインアウト時 -->
-            <% end %>
+            <%= render 'accounts/shared/logout_header' %><!-- ユーザーサインアウト時 -->
           <% end %>
-        </div>
-        <!-- owner headerとリンク干渉するのでロゴ移動したお -->
+        <% end %>
       </div>
     </header>
 

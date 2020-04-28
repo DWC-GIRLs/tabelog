@@ -1,15 +1,19 @@
 <!-- アカウントログアウト時 -->
-<% if request.path != "/accounts/sign_up" %><!-- 登録フォームでは非表示 -->
-  <ul class="nav-list">
-    <li class="nav-list-item"><%= link_to "食べログの特長と便利な使い方", :about %></li>
-    <li class="nav-list-item"><%= link_to "無料会員登録", :new_account_session %></li>
-    <li class="nav-list-item"><a href="#">予約確認</a></li>
-    <li class="nav-list-item"><a href="#">行ったお店</a></li>
-    <% if request.path != "/accounts/sign_in" %><!-- ログイン画面では非表示 -->
-      <li class="nav-list-item"><a href="#">ログイン</a></li>
-    <% end %>
-  </ul>
-<% end %>
+<div class="row">
+  <%= @page_title %>
+  <% if request.path != "/accounts/sign_up" %><!-- 登録フォームでは非表示 -->
+    <ul class="nav-list">
+      <li class="nav-list-item"><%= link_to "食べログの特長と便利な使い方", :about %></li>
+      <li class="nav-list-item"><%= link_to "無料会員登録", :new_account_session %></li>
+      <li class="nav-list-item"><a href="#">予約確認</a></li>
+      <li class="nav-list-item"><a href="#">行ったお店</a></li>
+      <% if request.path != "/accounts/sign_in" %><!-- ログイン画面では非表示 -->
+        <li class="nav-list-item"><a href="#">ログイン</a></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
+
 <div class="row">
   <%= link_to root_path do %>
     <%= image_tag 'logo.jpg', alt: "tabelog logo", class: "brand-logo"%>
