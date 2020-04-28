@@ -1,2 +1,95 @@
 <h1>Accounts::Restaurants#show</h1>
 <p>Find me in app/views/accounts/restaurants/show.html.erb</p>
+<div class="row">
+  <div class="col-md-8 restaurant-info">
+
+    <h1><%= @restaurant.name %></h1><br>
+    <p>shop id => <%= @restaurant.shop_id %></p>
+    <p>kana => <%= @restaurant.name_kana %></p>
+    <p>address => <%= @restaurant.address %></p>
+    <p>station => <%= @restaurant.station_name %></p>
+    <p>search_keyword => <%= @restaurant.search_keyword %></p>
+    <p>catch => <%= @restaurant.catch %></p>
+    <p>capacity => <%= @restaurant.capacity %></p>
+    <p>access => <%= @restaurant.access %></p>
+    <p>urls => <%= @restaurant.urls %></p>
+    <p>open => <%= @restaurant.open %></p>
+    <p>close => <%= @restaurant.close %></p>
+    <p>party_capacity => <%= @restaurant.party_capacity %></p>
+
+
+
+    <p>
+      wifi => <%= @restaurant.wifi %>
+    </p>
+    <p>
+      free_drink => <%= @restaurant.free_drink %> : <%= @restaurant.free_drink_memo %>
+    </p>
+    <p>
+      free_food => <%= @restaurant.free_food %> : <%= @restaurant.free_food_memo %>
+    </p>
+    <p>
+      private_room => <%= @restaurant.private_room %> : <%= @restaurant.private_room_memo %>
+    </p>
+    <p>
+      horigotatu <%= @restaurant.horigotatsu %> ; <%= @restaurant.horigotatsu_memo %>
+    </p>
+    <p>
+      tatami <%= @restaurant.tatami %> ; <%= @restaurant.tatami_memo %>
+    </p>
+    <p>
+      card <%= @restaurant.card %>
+    </p>
+    <p>
+      non_smoking <%= @restaurant.non_smoking %>
+    </p>
+    <p>
+      charter <%= @restaurant.charter %> : <%= @restaurant.charter_memo %>
+    </p>
+
+    <p>
+      parking <%= @restaurant.parking %> : <%= @restaurant.parking_memo %>
+    </p>
+    <p>
+      barrier_free <%= @restaurant.barrier_free %> ; <%= @restaurant.barrier_free_memo %>
+    </p>
+    <p>
+      karaoke <%= @restaurant.karaoke %>
+    </p>
+    <p>
+      tv <%= @restaurant.tv %>
+    </p>
+    <p>
+      english <%= @restaurant.english %>
+    </p>
+    <p>
+      pet <%= @restaurant.pet %>
+    </p>
+    <p>
+      child <%= @restaurant.child %> : <%= @restaurant.child_memo %>
+    </p>
+    <p>
+      lunch <%= @restaurant.lunch %>
+    </p>
+    <p>
+      midnight <%= @restaurant.midnight %>
+    </p>
+  </div>
+
+  <div class="col-md-4 reservation">
+    <%= form_tag(booking_histories_new_path, method: :get, remote: true) do %>
+    <%= label_tag :日付 %>
+    <%= date_field_tag :date, Time.zone.today %><br>
+    <%= label_tag :人数 %>
+    <%= select_tag :pople_count, options_for_select([*1..99], "2") %>名<br>
+    <%= label_tag :時間 %>
+    <%= select_tag :time, options_for_select(@results) %><br>
+    <%= hidden_field_tag :account_id  %>
+    <%= hidden_field_tag :restaurant_id, @restaurant.id %>
+    <%= submit_tag "予約する", class: "btn btn-lg btn-orange" %>
+    <% end %>
+    <div id="reservation-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    </div>
+  </div>
+
+</div>
