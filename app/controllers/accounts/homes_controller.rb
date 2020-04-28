@@ -1,6 +1,6 @@
 class Accounts::HomesController < ApplicationController
+
   def top
-    @area_slide = "1"
     @areas = ["東京", "神奈川", "愛知", "大阪", "京都", "福岡"]
     @hokkaido = ["北海道", "青森", "秋田", "山形", "岩手", "宮城", "福島"]
     @tyubu = ["愛知", "岐阜", "静岡", "三重", "新潟", "山梨", "長野", "石川", "富山", "福井"]

@@ -1,9 +1,9 @@
 <!-- 検索窓 -->
 <div class="row">
     <h4>日時、人数から探す</h4>
-    <%= form_tag :search_area, :method => 'get' do %>
+    <%= form_tag :search_area, :method => "get" do %>
       <%= text_field_tag :search, '', name: "search", placeholder: "エリア・駅 [例:銀座、渋谷]" %>
-      <%= submit_tag '検索', class: "btn-orange" %>
+      <%= submit_tag "検索", class: "btn-orange" %>
     <% end %>
 </div>
 
@@ -15,9 +15,10 @@
         <h4 class="font-weight-bold">エリアから探す</h4>
       </div>
       <div class="col-md-8 d-flex flex-wrap">
-        <% @areas.each do |area| %>
+        <% @areas.each.with_index(1) do |area, i| %>
         <!-- link_toにしたいなあ -->
-          <a href="carousel" data-target="#carousel" data-slide-to="1" >
+        <%= i %>
+          <a href="carousel" data-target="#carousel" data-slide-to=i >
             <div class="card mb-3 mr-4" style="max-width: 260px">
               <div class="row no-gutters">
                 <div class="col-md-4">
@@ -76,57 +77,46 @@
         </div>
       </div>
     </div>
-    <!----------- メインエリア ------------->
+    <!----------- メインエリア終 ------------->
 
-    <!--- サブエリア1(メインエリア押すと発火) --->
-    <div class="carousel-item">
-      <div class="col-md-8 mb-3">
-        <a href="carousel" data-target="#carousel" data-slide-to="0">
-          <h5 class="font-weight-bold">都道府県一覧に戻る</h5>
-        </a>
-      </div>
-      <div class="col-md-8">
-        <div class="card" style="min-height: 369px">
-          <!-- ここをリンクごとに変更 -->
-          <div class="card-body">
-            <h5 class="card-title font-weight-bold">東京</h5>
-              <p class="card-text">
-                <%= link_to "銀座", "#", class: "btn page-link text-dark d-inline-block mr-2" %>
-                <%= link_to "新橋・汐留", "#", class: "btn page-link text-dark d-inline-block mr-2" %>
-                <%= link_to "渋谷", "#", class: "btn page-link text-dark d-inline-block mr-2" %>
-                <%= link_to "新宿", "#", class: "btn page-link text-dark d-inline-block mr-2" %>
-                <%= link_to "池袋", "#", class: "btn page-link text-dark d-inline-block" %>
-              </p>
-              <ul class="card-text">
-                <li><%= link_to "銀座・新橋・有楽町", "#" %></li>
-                <li><%= link_to "銀座・新橋・有楽町", "#" %></li>
-                <li><%= link_to "銀座・新橋・有楽町", "#" %></li>
-                <li><%= link_to "銀座・新橋・有楽町", "#" %></li>
-                <li><%= link_to "銀座・新橋・有楽町", "#" %></li>
-                <li><%= link_to "銀座・新橋・有楽町", "#" %></li>
-              </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--- サブエリア2(メインエリア押すと発火) --->
-    <div class="carousel-item">
-      <div class="col-md-8 mb-3">
-        <a href="carousel" data-target="#carousel" data-slide-to="0">
-          <h5 class="font-weight-bold">都道府県一覧に戻る</h5>
-        </a>
-      </div>
-      <div class="col-md-8">
-        <div class="card" style="min-height: 369px">
-          <!-- ここをリンクごとに変更 -->
-          <div class="card-body">
-            <h5 class="card-title">神奈川</h5>
-              <p class="card-text">以下のテキストを追加のコンテンツへの自然な導入としてサポート。</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!----------- サブエリア --------------->
+    <!-- サブエリア(メインエリア押すと発火) -->
+    <!-- 東京(1) -->
+    <%= render "subarea",
+      l_area: "東京",
+      m_areas: ["銀座", "新橋・汐留", "渋谷", "新宿", "池袋"],
+      s_areas: ["銀座・新橋・有楽町", "東京・日本橋", "渋谷・恵比寿・代官山", "新宿・代々木・大久保", "池袋〜高田馬場・早稲田", "原宿・表参道・青山", "六本木・麻布・広尾", "赤坂・永田町・溜池", "四ツ谷・市ヶ谷・飯田橋", "秋葉原・神田・水道橋", "上野・浅草・日暮里", "両国・錦糸町・小岩", "築地・湾岸・お台場", "浜松町・田町・品川", "大井・蒲田", "目黒・白金・五反田", "東急沿線", "京王・小田急沿線", "中野〜西荻窪", "吉祥寺・三鷹・武蔵野境", "西武沿線", "板橋・東武沿線", "大塚・巣鴨・駒込・赤羽", "千住・綾瀬・葛飾", "小金井・国分寺・国立", "調布・府中・狛江", "町田・稲城・多摩", "西東京市周辺", "立川市・八王子市周辺", "福生・青梅周辺", "伊豆諸島・小笠原"]
+    %>
+    <!-- 神奈川(2) -->
+    <%= render "subarea",
+      l_area: "神奈川",
+      m_areas: ["横浜駅周辺", "関内・伊勢佐木町", "藤沢・辻堂", "川崎駅周辺", "中原区（武蔵野小杉周辺）"],
+      s_areas: ["横浜市", "鎌倉・湘南", "川崎市", "横須賀・逗子・葉山・三浦", "相模原・大和周辺", "海老名・厚木周辺", "小田原周辺", "箱根・湯河原"]
+    %>
+    <!-- 愛知(3) -->
+    <%= render "subarea",
+      l_area: "愛知",
+      m_areas: ["名古屋駅周辺", "栄・矢場町", "大須・金山・鶴舞", "岡崎市", "豊橋市"],
+      s_areas: ["名古屋市", "一宮・稲沢・愛西", "犬山・瀬戸・愛知郡", "大府・常滑・知多", "豊田・岡崎・西尾", "田原・豊橋・新城"]
+    %>
+    <!-- 大阪(4) -->
+    <%= render "subarea",
+      l_area: "大阪",
+      m_areas: ["大阪駅・梅田・新地", "南森町・天満・天神", "心斎橋・南船場・長堀橋", "難波・日本橋・道頓堀", "天王寺・阿倍野"],
+      s_areas: ["大阪市", "境・泉南", "豊中・池田・高槻", "北河内・東大阪", "南河内"]
+    %>
+    <!-- 京都(5) -->
+    <%= render "subarea",
+      l_area: "京都",
+      m_areas: ["京都駅周辺", "河原町・木屋町・先斗町", "御所周辺", "壬生・二条城周辺", "祇園・清水寺・東山"],
+      s_areas: ["京都市", "宇治・南山城", "亀山・丹羽・福知山", "天橋立・丹後半島"]
+    %>
+    <!-- 福岡(6) -->
+    <%= render "subarea",
+      l_area: "福岡",
+      m_areas: ["博多駅周辺", "中洲周辺", "天神周辺", "赤坂・薬院・平尾周辺", "北九州市小倉北区", "久留米"],
+      s_areas: ["福岡市", "太宰府・宗像・糟屋郡", "北九州市", "北九州市周辺", "筑豊", "久留米・筑後", "糸島"]
+    %>
+    <!----------- サブエリア終 --------------->
   </div>
 </div>
 
