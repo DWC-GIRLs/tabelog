@@ -154,7 +154,6 @@ ActiveRecord::Schema.define(version: 2020_04_16_070501) do
     t.datetime "updated_at", null: false
     t.integer "owner_id"
     t.index ["id", "owner_id"], name: "index_restaurants_on_id_and_owner_id"
-    t.index ["id"], name: "index_restaurants_on_id_and_user_id"
   end
 
   create_table "review_images", force: :cascade do |t|
