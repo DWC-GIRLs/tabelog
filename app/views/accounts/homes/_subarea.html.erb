@@ -14,9 +14,11 @@
               <%= link_to area, "#", class: "btn page-link text-dark d-inline-block mr-2" %>
             <% end %>
           </p>
-          <ul class="card-text">
+          <ul class="card-text d-flex flex-wrap p-0">
             <% s_areas.each do |area| %>
-              <li><%= link_to area, "#" %></li>
+              <li class="list-unstyled small" style="min-width: 175px; margin: 0 10px 10px 0">
+                <%= link_to area, "#" %>
+              </li>
             <% end %>
           </ul>
       </div>

@@ -7,7 +7,7 @@
     <% end %>
 </div>
 
-<div id="carousel" class="row mt-5 carousel slide" data-interval="false">
+<div id="carousel" class="row mt-5 carousel slide carousel-fade" data-interval="false">
   <div class="carousel-inner">
     <!----------- メインエリア ------------->
     <div class="carousel-item active">
@@ -17,8 +17,7 @@
       <div class="col-md-8 d-flex flex-wrap">
         <% @areas.each.with_index(1) do |area, i| %>
         <!-- link_toにしたいなあ -->
-        <%= i %>
-          <a href="carousel" data-target="#carousel" data-slide-to=i >
+          <a href="carousel" data-target="#carousel" data-slide-to=<%= i %>>
             <div class="card mb-3 mr-4" style="max-width: 260px">
               <div class="row no-gutters">
                 <div class="col-md-4">
@@ -36,44 +35,14 @@
           <!-- link_toにしたいなあ -->
         <% end %>
         <div class="col-md-7 p-0">
-          <div class="sub-area">北海道・東北</div>
-          <ul class="d-flex p-0">
-            <% @hokkaido.each do |h| %>
-              <li class="area mr-3 list-inline-item small"><%= link_to "#{h}", "#carousel", data: { slide: "next" } %></li>
-            <% end %>
-          </ul>
-          <div class="sub-area">中部</div>
-          <ul class="d-flex p-0">
-            <% @tyubu.each do |h| %>
-              <li class="area mr-3 list-inline-item small"><%= link_to "#{h}", "#carousel", data: { slide: "next" } %></li>
-            <% end %>
-          </ul>
-          <div class="sub-area">中国・四国</div>
-          <ul class="d-flex p-0">
-            <% @tyugoku.each do |h| %>
-              <li class="area mr-3 list-inline-item small"><%= link_to "#{h}", "#carousel", data: { slide: "next" } %></li>
-            <% end %>
-          </ul>
+          <%= render "mainarea", main: "北海道", areas: @hokkaido %>
+          <%= render "mainarea", main: "中部", areas: @tyubu %>
+          <%= render "mainarea", main: "中国・四国", areas: @tyugoku %>
         </div>
         <div class="col-md-5 p-0">
-          <div class="sub-area">関東</div>
-          <ul class="d-flex p-0">
-            <% @kanto.each do |h| %>
-              <li class="area mr-3 list-inline-item small"><%= link_to "#{h}", "#carousel", data: { slide: "next" } %></li>
-            <% end %>
-          </ul>
-          <div class="sub-area">関西</div>
-          <ul class="d-flex p-0">
-            <% @kansai.each do |h| %>
-              <li class="area mr-3 list-inline-item small"><%= link_to "#{h}", "#carousel", data: { slide: "next" } %></li>
-            <% end %>
-          </ul>
-          <div class="sub-area">九州・沖縄</div>
-          <ul class="d-flex p-0">
-            <% @okinawa.each do |h| %>
-              <li class="area mr-3 list-inline-item small"><%= link_to "#{h}", "#carousel", data: { slide: "next" } %></li>
-            <% end %>
-          </ul>
+          <%= render "mainarea", main: "関東", areas: @kanto %>
+          <%= render "mainarea", main: "関西", areas: @kansai %>
+          <%= render "mainarea", main: "九州・沖縄", areas: @okinawa %>
         </div>
       </div>
     </div>
