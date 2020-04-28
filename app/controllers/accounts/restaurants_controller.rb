@@ -50,5 +50,6 @@ class Accounts::RestaurantsController < ApplicationController
   end
 
   def index
+    @restaurants = Restaurant.all
   end
 end

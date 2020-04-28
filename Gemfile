@@ -75,8 +75,7 @@ gem 'omniauth-twitter'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-line'
 gem 'omniauth-amazon'
-# デバッグ
-gem 'pry-byebug'
+
 # image upload
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
