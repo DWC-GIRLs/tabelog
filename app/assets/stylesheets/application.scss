@@ -38,10 +38,27 @@ main {
   .px-#{$i} {padding: 0 #{$i * 10}px;}
   .py-#{$i} {padding: #{$i * 10i}px 0;}
 }
+
 // フォントサイズ
 .small {
   font-size: small;
 }
+
+// ボーダー
+.bt {
+  border-top: 1px solid #dee2e6;
+}
+.bb {
+  border-bottom: 1px solid #dee2e6;
+}
+.br {
+  border-right: 1px solid #dee2e6;
+}
+.bl {
+  border-left: 1px solid #dee2e6;
+}
+
+
 // ヘッダー
 header {
   padding-top: 10px;
@@ -51,6 +68,7 @@ header {
   box-shadow: 0 2px 2px -1px #eeece4;
 }
 
+// ナビリスト
 .nav-list {
   position: absolute;
   list-style: none;
@@ -58,11 +76,13 @@ header {
   right: 200px;
 }
 
+// ナビリストの個々
 .nav-list-item {
   display: inline;
   margin-right: 10px;
 }
 
+// ヘッダーのロゴ
 .brand-logo {
   width: 140px;
 }
