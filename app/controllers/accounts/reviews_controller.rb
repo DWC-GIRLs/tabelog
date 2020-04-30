@@ -3,6 +3,7 @@ class Accounts::ReviewsController < ApplicationController
   end
 
   def new
+    # モーダル
   end
 
   def create
@@ -18,6 +19,7 @@ class Accounts::ReviewsController < ApplicationController
   end
 
   def rate_create
+    # 星の評価
   end
 
   def rate_update
