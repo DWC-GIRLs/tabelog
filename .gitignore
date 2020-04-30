@@ -31,5 +31,5 @@
 /config/master.key
 
 ubuntu-bionic-18.04-cloudimg-console.log
+.DS_Store
 /.env
-

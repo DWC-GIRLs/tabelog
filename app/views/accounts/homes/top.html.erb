@@ -20,7 +20,7 @@
               <div class="row no-gutters">
                 <div class="col-md-4">
                   <!-- "#{area}.jpg"みたいにすれば画像もeachで回せるかな -->
-                  <%= image_tag "potato_row.jpg", size: "76x76", alt: area, class: "card-img" %>
+                  <%= image_tag "#{area}.jpg", size: "76x76", alt: area, class: "card-img rounded-0" %>
                 </div>
                 <div class="col-md-8">
                   <div class="card-body">
@@ -97,7 +97,7 @@
     <% @genres.each do |genre| %>
       <span class="main-genre">
         <%= link_to search_genre_path(genre_name: genre) do %>
-          <%= image_tag "焼肉.jpg", size: '135x135', class: "mr-2 genre_mainimg" %>
+          <%= image_tag "#{genre}.jpg", size: '135x135', class: "mr-2 genre_mainimg" %>
           <span class="ganre_name"><%= genre %></span>
         <% end %>
       </span>
