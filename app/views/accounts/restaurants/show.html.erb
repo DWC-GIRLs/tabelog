@@ -1,5 +1,6 @@
 <h1>Accounts::Restaurants#show</h1>
 <p>Find me in app/views/accounts/restaurants/show.html.erb</p>
+<% @page_title = @restaurant.name %>
 <div class="row">
   <div class="col-md-8 restaurant-info">
 
@@ -74,7 +75,59 @@
     <p>
       midnight <%= @restaurant.midnight %>
     </p>
+
+
+    <!-- 口コミ -->
+    <div class="restaurant-reviews bt bb">
+      <div class="title d-flex bd-highlight mt-4">
+        <h5 class=" font-weight-bold">口コミ</h5>
+        <%= link_to "投稿する", "#review-modal", class: "ml-auto btn btn-success", data: {toggle: "modal"} %>
+      </div>
+
+      <div>口コミ1</div>
+      <div>口コミ2</div>
+      <div>口コミ3</div>
+      <p>口コミをもっと見る(◯件)</p>
+    </div>
+
+    <!-- モーダルの設定 -->
+    <div class="modal" id="review-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">
+              <%= @restaurant.name %>
+            </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+
+
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+              <label class="btn btn-secondary">
+                <input type="radio" name="options" id="option1"> ラジオ
+              </label>
+              <label class="btn btn-secondary">
+                <input type="radio" name="options" id="option2"> ラジオ
+              </label>
+            </div>
+
+
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary">変更を保存</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
   </div>
+
 
   <div class="col-md-4 reservation">
     <%= form_tag(booking_histories_new_path, method: :get, remote: true) do %>
