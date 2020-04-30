@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 class Accounts::RegistrationsController < Devise::RegistrationsController
-  before_action :configure_sign_up_params, only: [:create]
+  # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
   def new
-    @account = Account.new(session["devise.facebook_data"])
+    @account = Account.new(session["devise.current_account.facebook_data"])
   end
 
   # POST /resource
@@ -15,7 +15,7 @@ class Accounts::RegistrationsController < Devise::RegistrationsController
     @account.password = Devise.friendly_token[0,20] #ランダムにパスワード作成
     if @account.save
       flash[:notice] = "Wellcome to tabelog!!!!!"
-      redirect_to root_path
+      sign_in_and_redirect @account, event: :authentication
     else
       render 'new'
     end
@@ -67,10 +67,6 @@ class Accounts::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
   private
-
-  def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:nick_name, :profile_image])
-  end
 
   def account_params
     params.require(:account).permit(:email, :nick_name, :profile_image, :provider, :uid)
