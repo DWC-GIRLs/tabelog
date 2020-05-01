@@ -81,7 +81,7 @@
     <div class="restaurant-reviews bt bb">
       <div class="title d-flex bd-highlight mt-4">
         <h5 class=" font-weight-bold">口コミ</h5>
-        <%= link_to "投稿する", "#review-modal", class: "ml-auto btn btn-success", data: {toggle: "modal"} %>
+        <%= link_to "投稿する", new_restaurant_review_path(@restaurant), remote: true, class: "ml-auto btn btn-success" %>
       </div>
 
       <div>口コミ1</div>
@@ -114,8 +114,6 @@
                 <input type="radio" name="options" id="option2"> ラジオ
               </label>
             </div>
-
-
 
           </div>
           <div class="modal-footer">
