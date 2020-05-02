@@ -4,6 +4,6 @@ class Review < ApplicationRecord
   belongs_to :account
   belongs_to :restaurant
 
-  enum meal_time: {昼: 0, 夜: 1}
+  enum meal_time: { 昼: 0, 夜: 1 }
 
 end
