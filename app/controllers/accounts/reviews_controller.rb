@@ -2,8 +2,9 @@ class Accounts::ReviewsController < ApplicationController
   def index
   end
 
-  def new
-    # モーダル
+  def new #モーダル(jsファイル参照)
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @review = Review.new
   end
 
   def create
