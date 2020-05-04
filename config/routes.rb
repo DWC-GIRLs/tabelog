@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     registrations: 'accounts/registrations',
     omniauth_callbacks: 'accounts/omniauth_callbacks'
   }
+  # deviseのurlが変えられず後回し中。。。
   # get 'accounts/login' => 'devise/sessions#new'
   # get 'accounts/member_entry' => 'devise_invitable/registrations#new'
 
@@ -37,20 +38,23 @@ Rails.application.routes.draw do
     get 'search/booking'
     get 'search/detail'
     # restaurants
-    resources :restaurants, only: [:index, :show]
+    resources :restaurants, only: [:index, :show] do
+      resources :reviews, only: [:new, :create, :edit, :update, :destroy]
+      member do
+        get 'rvwlst/:id' => 'reviews#show', as: 'review' #レビュー詳細
+        patch 'rate/:id' => 'reviews#rate_update' #評価編集処理
+        put 'rate/:id' => 'reviews#rate_update' #評価編集処理
+      end
+      collection do
+        get 'rvwlst' => 'reviews#index', as: 'reviews' #レビュー一覧
+        post 'rate' =>  'reviews#rate_create' #評価追加処理
+      end
+    end
 
     get 'booking_histories/index'
     get 'booking_histories/new'
     post 'booking_histories/create'
 
-    get 'reviews/index'
-    get 'reviews/new'
-    get 'reviews/create'
-    get 'reviews/edit'
-    get 'reviews/update'
-    get 'reviews/destroy'
-    get 'reviews/rate_create'
-    get 'reviews/rate_update'
   end
 
 

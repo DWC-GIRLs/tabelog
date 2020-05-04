@@ -2,7 +2,9 @@ class Accounts::ReviewsController < ApplicationController
   def index
   end
 
-  def new
+  def new #モーダル(jsファイル参照)
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @review = Review.new
   end
 
   def create
@@ -18,6 +20,7 @@ class Accounts::ReviewsController < ApplicationController
   end
 
   def rate_create
+    # 星の評価
   end
 
   def rate_update
