@@ -1,13 +1,13 @@
 <div class="modal-dialog" role="document">
   <div class="modal-content">
-    <%= form_with(model: booking_history, local: true) do |f| %>
+    <%= form_with(model: booking_history,  method: :post, remote: true) do |f| %>
 
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h3 class="modal-title">レストラン名</h3>
-        <h4 class="date-pople">来店日時　来店人数 名</h4>
+        <h3 class="modal-title"><%= @restaurant_name %></h3>
+        <h4 class="date-pople">来店日時 <%= @date %> <%= @time %>　来店人数 <%= @people_count %> 名</h4>
       </div>
 
       <div class="modal-body">
