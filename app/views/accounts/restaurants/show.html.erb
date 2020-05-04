@@ -77,15 +77,17 @@
   </div>
 
   <div class="col-md-4 reservation">
+    <h5>ネット予約</h5>
     <%= form_tag(booking_histories_new_path, method: :get, remote: true) do %>
     <%= label_tag :日付 %>
     <%= date_field_tag :date, Time.zone.today %><br>
     <%= label_tag :人数 %>
-    <%= select_tag :pople_count, options_for_select([*1..99], "2") %>名<br>
+    <%= select_tag :people_count, options_for_select([*1..99], "2") %>名<br>
     <%= label_tag :時間 %>
     <%= select_tag :time, options_for_select(@results) %><br>
-    <%= hidden_field_tag :account_id  %>
+    <%= hidden_field_tag :account_id, current_account  %>
     <%= hidden_field_tag :restaurant_id, @restaurant.id %>
+    <%= hidden_field_tag :restaurant_name, @restaurant.name %>
     <%= submit_tag "予約する", class: "btn btn-lg btn-orange" %>
     <% end %>
     <div id="reservation-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
