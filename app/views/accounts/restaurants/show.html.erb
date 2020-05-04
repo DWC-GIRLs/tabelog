@@ -1,5 +1,6 @@
 <h1>Accounts::Restaurants#show</h1>
 <p>Find me in app/views/accounts/restaurants/show.html.erb</p>
+<% @page_title = @restaurant.name %>
 <div class="row">
   <div class="col-md-8 restaurant-info">
 
@@ -74,6 +75,20 @@
     <p>
       midnight <%= @restaurant.midnight %>
     </p>
+
+
+    <!-- 口コミ -->
+    <div class="restaurant-reviews bt bb">
+      <div class="title d-flex bd-highlight mt-4">
+        <h5 class=" font-weight-bold">口コミ</h5>
+        <%= link_to "投稿する", new_restaurant_review_path(@restaurant), remote: true, class: "ml-auto btn btn-success" %>
+      </div>
+      <div>口コミ1</div>
+      <div>口コミ2</div>
+      <div>口コミ3</div>
+      <p>口コミをもっと見る(◯件)</p>
+    </div>
+
   </div>
 
   <div class="col-md-4 reservation">
@@ -91,5 +106,7 @@
     <div id="reservation-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
     </div>
   </div>
-
+  <!-- モーダルフォーム -->
+  <div id="review-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
+  <!-- モーダルフォーム -->
 </div>

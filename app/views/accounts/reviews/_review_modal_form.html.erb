@@ -1,0 +1,62 @@
+<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+  <div class="modal-content">
+
+    <div class="modal-header">
+      <h5 class="modal-title font-weight-bold">
+        <%= @restaurant.name %>
+      </h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <%= form_with model: @review, url: {controller: 'reviews', action: 'create'}, remote: true do |f| %>
+      <div class="modal-body">
+        <div id="carousel" class="carousel slide carousel-fade mb-3 text-center" data-interval="false">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <span class="font-weight-bold">口コミ対象をお選びください</span>
+              <div class="col-md-12">
+                <a href="carousel" data-target="#carousel" data-slide-to="1">
+                  
+                </a>
+                <a href="carousel" data-target="#carousel" data-slide-to="2">
+                  <label class="btn btn-secondary">
+                    <input type="radio" name="options" id="option2">昼
+                  </label>
+                </a>
+              </div>
+            </div>
+            <!-- スライド1 -->
+            <div class="carousel-item">
+              <a href="carousel" data-target="#carousel" data-slide-to="0">
+                <h5 class="font-weight-bold">都道府県一覧に戻る</h5>
+              </a>
+            </div>
+            <!-- スライド2 -->
+            <div class="carousel-item">
+              <a href="carousel" data-target="#carousel" data-slide-to="0">
+                <h5 class="font-weight-bold">削除</h5>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <%= f.text_field :title, placeholder: "口コミのタイトルを入れてください" %>
+        </div>
+        <div class="field">
+          <%= f.text_area :comment, placeholder: "口コミ本文を入れてください" %>
+        </div>
+
+      </div>
+
+      <div class="modal-footer">
+        <div class="actions">
+          <%= f.submit "同意して投稿", class: "btn btn-success" %>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+</div>
