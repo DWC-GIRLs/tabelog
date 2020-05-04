@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2020_05_01_142026) do
     t.string "profile_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "profile_image"
     t.string "provider"
     t.string "uid"
     t.index ["email"], name: "index_accounts_on_email", unique: true
@@ -152,8 +153,10 @@ ActiveRecord::Schema.define(version: 2020_05_01_142026) do
     t.string "coupon_urls"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
     t.integer "owner_id"
     t.index ["id", "owner_id"], name: "index_restaurants_on_id_and_owner_id"
+    t.index ["id", "user_id"], name: "index_restaurants_on_id_and_user_id"
   end
 
   create_table "review_images", force: :cascade do |t|
