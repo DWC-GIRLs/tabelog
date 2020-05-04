@@ -1,9 +1,5 @@
 class Accounts::SearchController < ApplicationController
 
-  def area
-    @restaurants = Restaurant.search_area(params[:search])
-  end
-
   def keyword
     unless params[:area_q] == ""
       area_q_array = params[:area_q].split(/[[:blank:]]+/)
