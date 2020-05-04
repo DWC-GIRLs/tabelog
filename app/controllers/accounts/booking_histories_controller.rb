@@ -4,8 +4,7 @@ class Accounts::BookingHistoriesController < ApplicationController
 
   def new
     @booking_history = BookingHistory.new
-    @restaurant_id = params[:restaurant_id]
-    @restaurant_name = params[:restaurant_name]
+    @restaurant = Restaurant.find(params[:restaurant_id])
     @date = params[:date]
     @time = params[:time]
     @people_count = params[:people_count]
@@ -14,26 +13,21 @@ class Accounts::BookingHistoriesController < ApplicationController
   def create
     @booking_history = BookingHistory.new(booking_history_params)
     @booking_history.account_id  = current_account.id
+    @booking_history.restaurant_id = params[:booking_history][:restaurant_id]
     @booking_history.reservation_number = SecureRandom.hex(16)
-    @booking_history.save
+    @booking_history.date = params[:booking_history][:date]
+    @booking_history.people_count = params[:booking_history][:people_count]
+    @booking_history.time = params[:booking_history][:time]
 
-    respond_to do |format|
-      if @booking_history.save
-        format.html { redirect_to @booking_history, notice: 'Booking was successfully created.' }
-        format.json { render :show, status: :created, location: @booking_history }
-        # 追加
-        format.js { @status = "success" }
-      else
-        format.html { render :new }
-        format.json { render json: @booking_history.errors, status: :unprocessable_entity }
-        # 追加
-        format.js { @status = "fail" }
-      end
+    if @booking_history.save
+      @status = "success"
+    else
+      @status = "fail"
     end
   end
 
   private
   def booking_history_params
-      params.require(:booking_history).permit(:date, :people_count, :notes)
+      params.require(:booking_history).permit(:notes)
   end
 end
