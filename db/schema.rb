@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_01_142026) do
+ActiveRecord::Schema.define(version: 2020_05_04_064252) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -46,11 +46,11 @@ ActiveRecord::Schema.define(version: 2020_05_01_142026) do
     t.integer "reservation_number", null: false
     t.date "date", null: false
     t.integer "pople_count", null: false
-    t.integer "total_price", null: false
-    t.integer "reservation_status", null: false
+    t.integer "reservation_status", default: 0, null: false
     t.string "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "time"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 2020_05_01_142026) do
     t.integer "account_id"
     t.integer "restaurant_id"
     t.integer "review_id"
-    t.float "all_score", null: false
+    t.float "all_score"
     t.float "cuisine"
     t.float "drink"
     t.float "service"
