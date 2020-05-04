@@ -12,7 +12,11 @@
 
       <div class="modal-body">
         <div class="label-info">
-          <%= f.label :その他の情報の入力 %>
+          <%= f.label :予約者情報 %>
+        </div>
+        <div class="info">
+           名前: <%= current_account.nick_name %><br>
+           メールアドレス: <%= current_account.email %><br>
         </div>
         <div class="label-notes">
           <%= f.label :レストランへのご要望 %>
