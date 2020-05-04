@@ -8,6 +8,7 @@ class Accounts::ReviewsController < ApplicationController
   end
 
   def create
+    
   end
 
   def edit
@@ -24,5 +25,11 @@ class Accounts::ReviewsController < ApplicationController
   end
 
   def rate_update
+  end
+
+  private
+
+  def review_params
+    params.require(:review).permit(:title, :comment)
   end
 end
