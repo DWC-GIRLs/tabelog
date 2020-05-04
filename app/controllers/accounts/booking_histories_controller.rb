@@ -13,6 +13,9 @@ class Accounts::BookingHistoriesController < ApplicationController
 
   def create
     @booking_history = BookingHistory.new(booking_history_params)
+    @booking_history.account_id  = current_account.id
+    @booking_history.reservation_number = SecureRandom.hex(16)
+    @booking_history.save
 
     respond_to do |format|
       if @booking_history.save
