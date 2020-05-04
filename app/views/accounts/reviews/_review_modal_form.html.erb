@@ -14,23 +14,22 @@
       <div class="modal-body">
         <div id="carousel" class="carousel slide carousel-fade mb-3 text-center" data-interval="false">
           <div class="carousel-inner">
-            <div class="carousel-item active">
+            <div class="carousel-item active bb pb-3">
               <span class="font-weight-bold">口コミ対象をお選びください</span>
               <div class="col-md-12">
-                <a href="carousel" data-target="#carousel" data-slide-to="1">
-                  
-                </a>
-                <a href="carousel" data-target="#carousel" data-slide-to="2">
-                  <label class="btn btn-secondary">
-                    <input type="radio" name="options" id="option2">昼
-                  </label>
-                </a>
+                <span data-target="#carousel" data-slide-to="1">
+                  <%= link_to "夜", "carousel", class: "btn btn-outline-info" %>
+                </span>
+                <span data-target="#carousel" data-slide-to="2">
+                  <%= link_to "昼", "carousel", class: "btn btn-outline-warning" %>
+                </span>
               </div>
             </div>
             <!-- スライド1 -->
             <div class="carousel-item">
               <a href="carousel" data-target="#carousel" data-slide-to="0">
                 <h5 class="font-weight-bold">都道府県一覧に戻る</h5>
+                <div id="rateYo"></div>
               </a>
             </div>
             <!-- スライド2 -->
