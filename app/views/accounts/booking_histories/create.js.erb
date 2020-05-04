@@ -1,6 +1,6 @@
 <% if @status == 'success' %>
-    $("tbody").append("<%= j(render("tr", user: @booking_history)) %>");
-<%  elsif @status == 'fail' %>
-    alert('error!');
+    alert('予約完了しました！');
+<%  else  %>
+    alert('予約できませんでした。');
 <% end %>
-$("#user-modal").modal("hide");
+$("#reservation-modal").modal("hide");
