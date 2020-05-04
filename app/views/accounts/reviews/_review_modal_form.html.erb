@@ -1,6 +1,6 @@
 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
   <div class="modal-content">
-
+    <!-- モーダルヘッダー -->
     <div class="modal-header">
       <h5 class="modal-title font-weight-bold">
         <%= @restaurant.name %>
@@ -12,7 +12,7 @@
 
     <%= form_with model: @review, url: {controller: 'reviews', action: 'create'}, remote: true do |f| %>
       <div class="modal-body">
-        <div id="carousel" class="carousel slide carousel-fade mb-3 text-center" data-interval="false">
+        <div id="carousel" class="carousel slide carousel-fade mb-3" data-interval="false">
           <div class="carousel-inner">
             <div class="carousel-item active bb pb-3">
               <span class="font-weight-bold">口コミ対象をお選びください</span>
@@ -40,17 +40,18 @@
             </div>
           </div>
         </div>
-
-        <div class="field">
-          <%= f.text_field :title, placeholder: "口コミのタイトルを入れてください" %>
+        <!-- レビュー内容 -->
+        <div class="review-body">
+          <div class="field">
+            <%= f.text_field :title, placeholder: "口コミのタイトルを入れてください" %>
+          </div>
+          <div class="field">
+            <%= f.text_area :comment, placeholder: "口コミ本文を入れてください" %>
+          </div>
         </div>
-        <div class="field">
-          <%= f.text_area :comment, placeholder: "口コミ本文を入れてください" %>
-        </div>
-
       </div>
 
-      <div class="modal-footer">
+      <div class="modal-footer d-flex justify-content-center">
         <div class="actions">
           <%= f.submit "同意して投稿", class: "btn btn-success" %>
         </div>

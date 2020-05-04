@@ -1,0 +1,5 @@
+<% if @status == 'success' %>
+  $("#review-modal").modal("hide");
+<%  elsif @status == 'fail' %>
+  alert('レビュー投稿に失敗しました。');
+<% end %>

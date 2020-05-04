@@ -8,7 +8,18 @@ class Accounts::ReviewsController < ApplicationController
   end
 
   def create
-    
+    @review = Review.new(review_params)
+    @review.account_id = current_account.id
+    @review.restaurant_id = params[:restaurant_id]
+    respond_to do |format|
+      if @review.save
+        format.html { redirect_back(fallback_location: root_path) }
+        format.js { @status = "success" }
+      else
+        format.html { render "new" }
+        format.js { @status = "fail" }
+      end
+    end
   end
 
   def edit
