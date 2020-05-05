@@ -83,3 +83,6 @@ gem "refile-mini_magick"
 # デザイン
 gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
+
+# 評価
+gem 'rateyo-rails'
