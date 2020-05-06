@@ -1,7 +1,7 @@
 class Restaurant < ApplicationRecord
   belongs_to :owner
 
-  has_many :booking_histries, dependent: :destroy
+  has_many :booking_histories, dependent: :destroy
   has_many :rates,            dependent: :destroy
   has_many :reviews,          dependent: :destroy
   has_many :restaurant_images,    dependent: :destroy
