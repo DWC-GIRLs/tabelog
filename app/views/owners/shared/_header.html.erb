@@ -16,13 +16,9 @@
   <% end %>
   <div class="row" style="height:60px;">
     <%= link_to new_owner_session_path do %>
-      <%= image_tag 'potato.png', style:"height:100%;", class: "brand-logo" %>
+      <%= image_tag 'potato.png', class: "brand-logo", style:"height:60px; width:60px;" %>
     <% end %>
-    <div class="row" style="height:60px;">
-      <%= link_to new_owner_session_path do %>
-        <%= image_tag 'potato.png', style:"height:100%;" %>
-      <% end %>
-      <span class="align-top"><%= message_for_owner %></span>
+    <span class="align-top"><%= message_for_owner %></span>
     </div>
   </div>
  </div>
