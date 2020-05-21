@@ -6,6 +6,9 @@ class Restaurant < ApplicationRecord
   has_many :reviews,          dependent: :destroy
   has_many :restaurant_images,    dependent: :destroy
 
+  validates :shop_id, :name, :logo_image_id, :address, :genre_code, :owner_id,
+            presence: true
+
   attachment :logo_image
   accepts_attachments_for :restaurant_images, attachment: :image
 
