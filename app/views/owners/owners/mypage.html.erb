@@ -1,7 +1,7 @@
-<h1>Owners::Owners#mypage</h1>
+<h3>ようこそ！ <%= @fullname %>さん！</h3>
 
-<%= current_owner.email %><br>
-<%= current_owner.first_name %><br>
-<%= current_owner.last_name %><br>
+<%= link_to "オーナー情報を編集する", edit_owner_path(current_owner) %>
 
-<%= link_to "new restaurant", new_owners_restaurant_path %>
+<p>登録されているレストランの数 <%= @restaurants.count %> 件</p>
+
+<%= render 'restaurants_index', restaurants: @restaurants %>

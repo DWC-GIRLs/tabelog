@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 2020_05_04_064252) do
     t.integer "account_id"
     t.integer "restaurant_id"
     t.integer "review_id"
-    t.float "all_score"
+    t.float "all_score", null: false
     t.float "cuisine"
     t.float "drink"
     t.float "service"

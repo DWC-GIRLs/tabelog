@@ -20,3 +20,11 @@ ja:
         password: パスワード
         password_confirmation: パスワード確認
         email: メールアドレス
+    models:
+      restaurant: "レストラン"
+    attributes:
+      restaurant:
+        name: "店名"
+        logo_image_id: "ロゴ画像"
+        address: "住所"
+        genre_code: "ジャンル"

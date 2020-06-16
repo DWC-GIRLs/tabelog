@@ -13,8 +13,9 @@ class Owners::RestaurantsController < ApplicationController
     if new_restaurant.save
       redirect_to owners_restaurant_path(new_restaurant)
     else
-      flash[:error] = "保存されてませ～んm9(^Д^)ﾌﾟｷﾞｬｰ"
-      redirect_back(fallback_location: owners_mypage_path(current_owner))
+      # redirect_back(fallback_location: new_owners_restaurant_path(current_owner))
+      @new_restaurant = new_restaurant
+      render :new
     end
   end
 
@@ -34,6 +35,8 @@ class Owners::RestaurantsController < ApplicationController
   end
 
   def destroy
+    restaurant = Restaurant.find(params[:id])
+    restaurant.destroy
   end
 
   private
@@ -59,7 +62,8 @@ class Owners::RestaurantsController < ApplicationController
                                         :child, :child_memo,
                                         :lunch,
                                         :midnight,
-                                        :other_memo, :shop_detail_memo, :coupon_urls, restaurant_images_images: []
+                                        :other_memo, :shop_detail_memo, :coupon_urls,
+                                        :owner_id, restaurant_images_images: []
                                       )
   end
 end

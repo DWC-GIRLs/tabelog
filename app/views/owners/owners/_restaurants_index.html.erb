@@ -1,0 +1,14 @@
+<% restaurants.each do |restaurant| %>
+  <%= link_to restaurant_path(restaurant) do %>
+    <div class="card mt-3">
+      <h5 class="card-header font-weight-bold">
+        <%= restaurant.name %>
+        <small class="text-dark font-weight-bold">/ <%= restaurant.genre_name %></small>
+      </h5>
+      <div class="card-body text-black-50">
+        <%= image_tag restaurant.logo_image_id, size: "150x150" %>
+        <%= restaurant.catch %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
