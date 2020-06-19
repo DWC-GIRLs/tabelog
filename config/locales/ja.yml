@@ -20,6 +20,7 @@ ja:
         password: パスワード
         password_confirmation: パスワード確認
         email: メールアドレス
+
     models:
       restaurant: "レストラン"
     attributes:
@@ -28,3 +29,14 @@ ja:
         logo_image_id: "ロゴ画像"
         address: "住所"
         genre_code: "ジャンル"
+
+    models:
+      owner: "オーナー"
+    attributes:
+      owner:
+        first_name: "姓"
+        last_name: "名"
+        first_kana: "セイ"
+        last_kana: "メイ"
+        email: "メールアドレス"
+        phone_number: "電話番号"

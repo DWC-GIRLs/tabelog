@@ -5,4 +5,8 @@ class Owner < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :restaurants, dependent: :destroy
+
+  def fullname
+    self.first_name + self.last_name
+  end
 end
